@@ -1,7 +1,15 @@
 "use client";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Layout, Server, Sparkles, Database, ArrowUpRight } from "lucide-react";
+import { Layout, Server, Sparkles, Database, ArrowUpRight, Compass } from "lucide-react";
+
+const iconMap = {
+  Layout: Layout,
+  Server: Server,
+  Database: Database,
+  Compass: Compass,
+  Sparkles: Sparkles
+};
 
 function ServiceCard({ service }) {
   const cardRef = useRef(null);
@@ -16,6 +24,8 @@ function ServiceCard({ service }) {
       y: e.clientY - rect.top,
     });
   };
+
+  const IconComponent = iconMap[service.iconName] || Sparkles;
 
   return (
     <motion.div
@@ -49,7 +59,7 @@ function ServiceCard({ service }) {
         {/* Card Header */}
         <div className="flex items-center justify-between">
           <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-zinc-900/60 text-indigo-400 group-hover:text-white transition-colors duration-300">
-            {service.icon}
+            <IconComponent className="h-5 w-5" />
           </div>
           <span className="font-mono text-[9px] text-zinc-500 tracking-wider uppercase font-semibold">
             {service.tag}
@@ -83,35 +93,35 @@ function ServiceCard({ service }) {
   );
 }
 
-export default function Services() {
-  const servicesData = [
+export default function Services({ servicesData }) {
+  const dataToRender = servicesData || [
     {
       title: "Frontend Engineering",
-      tag: "01 // SERVICE",
-      icon: <Layout className="h-5 w-5" />,
-      description: "Crafting beautiful, accessible, and high-performance user interfaces in Next.js. I specialize in mapping fluid physics, rich aesthetic animations in Framer Motion, and responsive grids that scale flawlessly across all device layouts.",
-      features: ["Next.js & React 19", "Framer Motion", "Tailwind CSS v4", "Lenis Smooth Scroll"],
+      tag: "01 // CAPABILITY",
+      iconName: "Layout",
+      description: "Crafting beautiful, accessible, and high-performance user interfaces in Next.js. I specialize in mapping fluid physics, rich aesthetic animations in Framer Motion, and responsive layouts that adapt flawlessly from mobile screens to large grid monitors.",
+      features: ["Next.js & React 19", "TypeScript & ES6+", "Tailwind CSS v4", "Framer Motion & Physics"],
     },
     {
-      title: "Backend & Server APIs",
-      tag: "02 // SERVICE",
-      icon: <Server className="h-5 w-5" />,
-      description: "Designing fast, reliable, and secure server-side logic and application programming interfaces. Building edge-routed serverless handlers in Next.js API endpoints connected via robust data integration protocols.",
-      features: ["Next.js API Routes", "RESTful Interfaces", "Node.js", "Serverless Edge Sync"],
+      title: "Backend & Serverless",
+      tag: "02 // CAPABILITY",
+      iconName: "Server",
+      description: "Designing fast, reliable, and secure server-side logic and application programming interfaces. I build modular RESTful APIs, secure JWT-based role authorization protocols, and scalable backend workflows.",
+      features: ["Node.js & Express.js", "Server-side Architecture", "JWT Authentication", "REST APIs & Endpoints"],
     },
     {
-      title: "UI Engineering & Systems",
-      tag: "03 // SERVICE",
-      icon: <Database className="h-5 w-5" />,
-      description: "Developing highly scalable, customized visual components designed around physics-based springs and hardware acceleration. Creating modular, reusable, and performance-first library architectures for immediate deployment.",
-      features: ["Physics Springs", "Modular Atoms", "SVG Animations", "Figma Design Systems"],
+      title: "Database Integration",
+      tag: "03 // CAPABILITY",
+      iconName: "Database",
+      description: "Structuring scalable databases to secure zero data-loss transitions, sub-millisecond document retrievals, and optimal query speeds. Managing relational mapping schemas, ORM systems, and cached databases.",
+      features: ["PostgreSQL & Supabase", "Drizzle ORM", "MongoDB & Mongoose", "MySQL Database Schema"],
     },
     {
-      title: "Data & DB Architecture",
-      tag: "04 // SERVICE",
-      icon: <Database className="h-5 w-5" />,
-      description: "Structuring scalable databases to secure zero data-loss transitions, sub-millisecond document retrievals, and optimal query speeds. Managing document schemas, caching setups, and Atlas-hosted storage clusters.",
-      features: ["MongoDB Atlas", "Mongoose Schemas", "Cached connections", "Dynamic indexing"],
+      title: "Product Integration",
+      tag: "04 // CAPABILITY",
+      iconName: "Compass",
+      description: "Combining technical problem-solving with product-driven thinking to create full features. Experienced in building automated PDF export systems, third-party API integrations, and AI response pipelines.",
+      features: ["Gemini API Integration", "PDF Export Systems", "Responsive Web Design", "Third-party Integrations"],
     },
   ];
 
@@ -133,7 +143,7 @@ export default function Services() {
 
       {/* Bento Grid */}
       <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-        {servicesData.map((service) => (
+        {dataToRender.map((service) => (
           <ServiceCard key={service.title} service={service} />
         ))}
       </div>

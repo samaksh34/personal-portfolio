@@ -2,7 +2,14 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Code, GitPullRequest } from "lucide-react";
 
-export default function Hero() {
+export default function Hero({ personalInfo }) {
+  const { name, title, subHeading, tagline } = personalInfo || {
+    name: "Samaksh Saxena",
+    title: "Full-Stack Developer & Product Builder",
+    subHeading: "Building scalable web platforms with modern full-stack technologies.",
+    tagline: "Passionate full-stack developer focused on building scalable platforms, intuitive interfaces, and impactful digital products."
+  };
+
   // Cinematic staggering fade-reveal coordinate settings
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -64,17 +71,17 @@ export default function Hero() {
           variants={itemVariants}
           className="mt-8 text-4xl sm:text-6xl md:text-8xl font-semibold tracking-tight text-white leading-[1.08] select-none"
         >
-          Designing <span className="font-serif italic font-light text-indigo-200">Fluid</span> <br />
-          Interfaces. Building <br />
-          <span className="font-mono text-zinc-300 text-3xl sm:text-5xl md:text-7xl tracking-tighter align-middle bg-clip-text text-transparent bg-gradient-to-r from-zinc-200 via-zinc-400 to-zinc-500">&lt;Scalable&gt;</span> Systems
+          {name.split(" ")[0]} <span className="font-serif italic font-light text-indigo-200">{name.split(" ")[1]}</span> <br />
+          <span className="font-mono text-zinc-300 text-3xl sm:text-5xl md:text-6xl tracking-tighter align-middle bg-clip-text text-transparent bg-gradient-to-r from-zinc-200 via-zinc-400 to-zinc-500">&lt;Full-Stack Architect&gt;</span>
         </motion.h1>
 
         {/* Narrative subtext */}
         <motion.p
           variants={itemVariants}
-          className="mt-8 max-w-xl text-sm sm:text-base md:text-lg leading-relaxed text-zinc-400 font-light"
+          className="mt-8 max-w-3xl text-xs sm:text-sm md:text-base leading-relaxed text-zinc-400 font-light"
         >
-          I am a creative full-stack engineer and designer mapping minimalist spatial grids with physics-based animations. Crafting interfaces that look premium and feel premium.
+          <span className="block text-indigo-300 font-medium tracking-tight mb-2 text-sm sm:text-base md:text-lg">{subHeading}</span>
+          {tagline}
         </motion.p>
 
         {/* Custom Actions */}

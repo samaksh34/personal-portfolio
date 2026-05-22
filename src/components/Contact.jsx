@@ -40,7 +40,15 @@ function LinkedinIcon({ className }) {
   );
 }
 
-export default function Contact() {
+export default function Contact({ contactInfo, recruiterLine }) {
+  const { email, github, linkedin } = contactInfo || {
+    email: "samakshsaxena03@gmail.com",
+    github: "https://github.com/samaksh34",
+    linkedin: "https://linkedin.com/in/samaksh"
+  };
+
+  const dynamicRecruiterLine = recruiterLine || "Full-stack developer focused on building scalable digital platforms with modern architectures, intuitive user experiences, and real-world problem-solving approaches.";
+
   const formRef = useRef(null);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
@@ -126,14 +134,14 @@ export default function Contact() {
               <span className="font-serif italic font-light text-indigo-200">uniquely cinematic</span> together.
             </h3>
             <p className="mt-6 text-sm text-zinc-400 font-light leading-relaxed max-w-sm">
-              I am open to engineering contracts, design system consultations, and full-time full-stack contributions. Drop me a brief message and I'll respond within 24 hours.
+              {dynamicRecruiterLine}
             </p>
           </div>
 
           {/* Social Channels Link Cards */}
           <div className="flex flex-col gap-4">
             <a
-              href="mailto:contact@samaksh.dev"
+              href={`mailto:${email}`}
               className="group flex items-center justify-between p-4 rounded-2xl border border-white/5 bg-zinc-950/40 hover:border-zinc-800/80 transition-all duration-300"
             >
               <div className="flex items-center gap-3.5">
@@ -142,7 +150,7 @@ export default function Contact() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">Direct Email</span>
-                  <span className="text-xs sm:text-sm font-semibold text-zinc-300 group-hover:text-white transition-colors">contact@samaksh.dev</span>
+                  <span className="text-xs sm:text-sm font-semibold text-zinc-300 group-hover:text-white transition-colors">{email}</span>
                 </div>
               </div>
               <ArrowUpRight className="h-4 w-4 text-zinc-600 group-hover:text-white transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -150,7 +158,7 @@ export default function Contact() {
 
             <div className="grid grid-cols-2 gap-4">
               <a
-                href="https://github.com/samaksh34"
+                href={github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center justify-between p-4 rounded-2xl border border-white/5 bg-zinc-950/40 hover:border-zinc-800/80 transition-all duration-300"
@@ -165,7 +173,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="https://linkedin.com/in/samaksh"
+                href={linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center justify-between p-4 rounded-2xl border border-white/5 bg-zinc-950/40 hover:border-zinc-800/80 transition-all duration-300"

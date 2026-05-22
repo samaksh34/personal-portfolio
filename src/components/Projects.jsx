@@ -114,58 +114,58 @@ function ProjectCard({ project, onClick }) {
   );
 }
 
-export default function Projects() {
+export default function Projects({ projectsData }) {
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const projectsData = [
+  const dataToRender = projectsData || [
     {
-      id: "aetheros",
-      title: "AetherOS",
-      description: "A gorgeous client-side web desktop operating system built completely in vanilla Next.js and high-frequency canvas 3D engines, featuring active sandboxed browser windows and dynamic workspace configurations.",
-      longDescription: "AetherOS represents a breakthrough in browser capabilities. It constructs a complete multi-window operating environment on standard client nodes. It features a custom window manager, simulated file systems, a shell emulator with functional scripts, and dynamic desktop coordinate snapping, fully loaded with high-speed rendering to support 60fps canvas operations.",
+      id: "clubverse",
+      title: "ClubVerse",
+      description: "A scalable full-stack campus ecosystem platform designed to streamline club management, student engagement, and event coordination through multi-role dashboards.",
+      longDescription: "ClubVerse is a modern full-stack web platform built to centralize student communities, club management, and campus event workflows within a single ecosystem. The platform features dedicated portals for students, club admins, and super admins, enabling structured management and seamless interaction across different user roles. It demonstrates advanced concepts including role-based access control (RBAC), relational database architecture, authentication systems, and scalable backend workflows.",
       featured: true,
       gridSpan: "md:col-span-2",
-      tags: ["Next.js", "Framer Motion", "Three.js", "WebAudio API"],
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Drizzle ORM"],
       accentColor: "indigo-500",
-      stats: { lines: "4,800+", speed: "60 FPS", size: "128 KB" },
-      links: { github: "#", live: "#" }
+      stats: { architecture: "Relational", accessControl: "RBAC Portals", database: "PostgreSQL" },
+      links: { github: "https://github.com/samaksh34", live: "#" },
     },
     {
-      id: "novadb",
-      title: "Nova DB",
-      description: "Extremely fast high-concurrency memory-first serverless database engine built for sub-millisecond document syncs, featuring secure dynamic sharding indices.",
-      longDescription: "Nova DB was designed to solve the warm-up latencies of serverless dynamic stores. It maps a memory-first architecture leveraging asynchronous cache syncs directly to persistent object storages. It includes optimized indexing structures, secure row-level client synchronization channels, and full transaction atomicity layers built entirely in JS.",
+      id: "resumecraft",
+      title: "ResumeCraft",
+      description: "A dynamic ATS-friendly resume builder featuring customizable templates, authentication systems, real-time preview, and professional PDF export functionality.",
+      longDescription: "Developed a full-stack resume builder platform focused on creating machine-readable, ATS-compatible resumes with real-time editing and customizable templates. Implemented JWT-based authentication, dashboard management, dynamic form systems, and responsive UI architecture to streamline professional resume generation and instant downloads.",
       featured: false,
       gridSpan: "md:col-span-1",
-      tags: ["Mongoose", "MongoDB", "REST API", "Redis Cache"],
+      tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "JWT Auth"],
       accentColor: "emerald-500",
-      stats: { latency: "<1.2ms", shards: "32 Cluster", cache: "99.8%" },
-      links: { github: "#", live: "#" }
+      stats: { export: "PDF System", templates: "ATS-Friendly", type: "Full-Stack" },
+      links: { github: "https://github.com/samaksh34", live: "#" },
     },
     {
-      id: "heliosui",
-      title: "Helios UI",
-      description: "A premium mechanical visual component architecture mapped around spring-physics engines, designed to integrate seamlessly inside cinematic interfaces.",
-      longDescription: "Helios UI is a highly bespoke, performance-first design system. Built with raw JS callbacks and hardware-accelerated transforms, it replaces traditional CSS transitions with dynamic physics matrices. Features magnetic mouse triggers, spring-based elastic list coordinates, and high-fidelity scrolling layout decrescendos.",
+      id: "feedbacksystem",
+      title: "Faculty Feedback System",
+      description: "A web-based evaluation platform enabling structured faculty feedback collection, analytics visualization, and report generation workflows.",
+      longDescription: "Built a secure feedback management platform allowing students to submit structured faculty evaluations while maintaining organized data handling and efficient analytics workflows. Developed responsive interfaces, validation systems, and analytics dashboards to generate performance insights and improve institutional decision-making processes.",
       featured: false,
       gridSpan: "md:col-span-1",
-      tags: ["Tailwind CSS", "Spring Physics", "Web Audio", "Framer Motion"],
+      tags: ["HTML", "CSS", "JavaScript", "Analytics Dashboard", "Charts"],
       accentColor: "cyan-500",
-      stats: { elements: "42 Atoms", physics: "Hooke's Law", weight: "12 KB" },
-      links: { github: "#", live: "#" }
+      stats: { interface: "Responsive UI", analytics: "Visual Charts", role: "Frontend Lead" },
+      links: { github: "https://github.com/samaksh34", live: "#" },
     },
     {
-      id: "veloce",
-      title: "Veloce API",
-      description: "Edge-routed synchronous store API engine that synchronizes commercial product caches globally in milliseconds, completely eliminating stale shop caches.",
-      longDescription: "Veloce API is an enterprise-scale storefront engine built to operate on edge worker clusters. It replaces traditional database pulls with static edge caches that are synchronized dynamically using lightweight pub-sub brokers, guaranteeing globally unified cache states under 15ms without central server strain.",
-      featured: true,
+      id: "healthchatbot",
+      title: "Health Assistant Chatbot",
+      description: "An AI-powered healthcare assistant chatbot designed to provide intelligent symptom-based responses and real-time user interaction workflows.",
+      longDescription: "Collaboratively developed an AI-based healthcare chatbot leveraging NLP concepts and intelligent response pipelines to assist users with symptom-based medical guidance. Focused on building responsive chat interactions, optimized query handling, and conversational workflows.",
+      featured: false,
       gridSpan: "md:col-span-2",
-      tags: ["Next.js API", "Edge Middleware", "Websockets", "MongoDB"],
+      tags: ["JavaScript", "NLP Basics", "AI Response", "Chat Interface", "Node.js"],
       accentColor: "violet-500",
-      stats: { edgeSync: "12ms", loadTest: "100k Req/s", cacheHit: "100%" },
-      links: { github: "#", live: "#" }
-    }
+      stats: { engine: "NLP Pipelines", design: "Fluid Chat UI", technology: "AI Agent" },
+      links: { github: "https://github.com/samaksh34", live: "#" },
+    },
   ];
 
   return (
@@ -183,7 +183,7 @@ export default function Projects() {
 
       {/* Bento Grid */}
       <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {projectsData.map((project) => (
+        {dataToRender.map((project) => (
           <ProjectCard
             key={project.id}
             project={project}

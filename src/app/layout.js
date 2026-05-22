@@ -29,38 +29,39 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Samaksh | Creative Full-Stack Developer | Next.js & Node.js Expert",
-  description: "Samaksh is a Creative Full-Stack Developer specializing in Next.js, React, Node.js, and MongoDB. View portfolio projects, services, certifications, and FAQs.",
-  keywords: ["Samaksh", "Samaksh developer", "Samaksh portfolio", "Full Stack Developer", "React Developer", "Node.js Developer", "Web Developer", "samaksh.dev"],
-  authors: [{ name: "Samaksh" }],
-  creator: "Samaksh",
-  publisher: "Samaksh",
+  title: "Samaksh Saxena | Full-Stack Developer & Product Builder",
+  description: "Samaksh Saxena is a Full-Stack Developer and Product Builder specializing in Next.js, React, Node.js, Supabase, PostgreSQL, and MongoDB. Explore portfolio projects, services, and FAQs.",
+  keywords: ["Samaksh Saxena", "Samaksh Saxena developer", "Samaksh Saxena portfolio", "Full Stack Developer", "Next.js Developer", "React Developer", "Node.js Developer", "ABES Engineering College", "ClubVerse"],
+  authors: [{ name: "Samaksh Saxena" }],
+  creator: "Samaksh Saxena",
+  publisher: "Samaksh Saxena",
   robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   alternates: {
     canonical: "https://samaksh.dev/",
   },
   openGraph: {
     type: "profile",
-    title: "Samaksh | Creative Full-Stack Developer",
-    description: "Creative Full-Stack Developer specializing in Next.js, React, Node.js, and modern web technologies. Explore my portfolio and projects.",
+    title: "Samaksh Saxena | Full-Stack Developer & Product Builder",
+    description: "Full-Stack Developer and Product Builder specializing in Next.js, React, Node.js, Supabase, PostgreSQL, and Drizzle ORM. Explore my portfolio and projects.",
     url: "https://samaksh.dev/",
-    siteName: "Samaksh - Portfolio",
+    siteName: "Samaksh Saxena - Portfolio",
     images: [
       {
         url: "https://samaksh.dev/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Samaksh - Creative Full-Stack Developer",
+        alt: "Samaksh Saxena - Full-Stack Developer",
       },
     ],
     locale: "en_US",
     firstName: "Samaksh",
+    lastName: "Saxena",
     username: "samaksh34",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Samaksh | Creative Full-Stack Developer",
-    description: "Creative Full-Stack Developer specializing in Next.js, React, Node.js, and modern web technologies. Explore my portfolio.",
+    title: "Samaksh Saxena | Full-Stack Developer & Product Builder",
+    description: "Full-Stack Developer and Product Builder specializing in Next.js, React, Node.js, and modern web technologies.",
     images: ["https://samaksh.dev/og-image.png"],
   },
 };
@@ -70,10 +71,10 @@ export default function RootLayout({ children }) {
     "@context": "https://schema.org",
     "@type": "Person",
     "@id": "https://samaksh.dev/#person",
-    "name": "Samaksh",
+    "name": "Samaksh Saxena",
     "url": "https://samaksh.dev",
     "image": "https://samaksh.dev/og-image.png",
-    "description": "Creative Full-Stack Developer specializing in Next.js, React, Node.js, and modern web architectures.",
+    "description": "Full-Stack Developer and Product Builder currently pursuing B.Tech in IT at ABES Engineering College, Ghaziabad. Specializing in Next.js, Supabase, and scalable architectures.",
     "jobTitle": "Full Stack Developer",
     "worksFor": {
       "@type": "Organization",
@@ -81,16 +82,18 @@ export default function RootLayout({ children }) {
     },
     "knowsAbout": [
       "React.js",
-      "Node.js",
+      "Next.js",
       "TypeScript",
       "JavaScript",
-      "Full Stack Development",
-      "Web Development",
+      "Supabase",
+      "PostgreSQL",
+      "Drizzle ORM",
       "MongoDB",
-      "Tailwind CSS",
-      "Next.js",
-      "Framer Motion",
-      "Lenis Scroll"
+      "Node.js",
+      "Express.js",
+      "JWT Authentication",
+      "Full Stack Development",
+      "Web Development"
     ],
     "sameAs": [
       "https://github.com/samaksh34",
@@ -107,8 +110,8 @@ export default function RootLayout({ children }) {
     "@type": "WebSite",
     "@id": "https://samaksh.dev/#website",
     "url": "https://samaksh.dev",
-    "name": "Samaksh - Creative Full-Stack Developer",
-    "description": "Portfolio website of Samaksh, a Creative Full-Stack Developer",
+    "name": "Samaksh Saxena - Full-Stack Developer & Product Builder",
+    "description": "Portfolio website of Samaksh Saxena, a Full-Stack Developer & Product Builder",
     "publisher": {
       "@id": "https://samaksh.dev/#person"
     },
@@ -119,8 +122,8 @@ export default function RootLayout({ children }) {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": "https://samaksh.dev/#service",
-    "name": "Samaksh - Web Development Services",
-    "description": "Creative Full Stack Web Development services including React, Node.js, and modern web technologies",
+    "name": "Samaksh Saxena - Web Development Services",
+    "description": "Full-Stack Web Development services specializing in Next.js, React, Node.js, and modern serverless database technologies",
     "provider": {
       "@id": "https://samaksh.dev/#person"
     },
@@ -131,7 +134,8 @@ export default function RootLayout({ children }) {
       "React Development",
       "Node.js Development",
       "Frontend Development",
-      "Backend Development"
+      "Backend Development",
+      "Database Integration"
     ]
   };
 
@@ -140,8 +144,8 @@ export default function RootLayout({ children }) {
     "@type": "WebPage",
     "@id": "https://samaksh.dev/#webpage",
     "url": "https://samaksh.dev/",
-    "name": "Samaksh | Creative Full-Stack Developer",
-    "description": "Samaksh is a Creative Full-Stack Developer specializing in Next.js, React, Node.js, and MongoDB. View portfolio projects, services, certifications, and FAQs.",
+    "name": "Samaksh Saxena | Full-Stack Developer & Product Builder",
+    "description": "Samaksh Saxena is a Full-Stack Developer & Product Builder specializing in Next.js, React, Node.js, and MongoDB. View portfolio projects, services, and FAQs.",
     "isPartOf": {
       "@id": "https://samaksh.dev/#website"
     },
@@ -162,42 +166,42 @@ export default function RootLayout({ children }) {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What does your standard website design package include?",
+        "name": "What is your primary full-stack technology stack?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "My standard package includes fully responsive layouts, state-of-the-art visual aesthetics, physics-based micro-interactions, thorough search engine optimization (SEO), fast load-speed parameters, cross-browser support, and high-performance clean reusable components. I also bundle in complete documented code files and support guides."
+          "text": "I specialize in building React/Next.js frontend applications integrated with Supabase, PostgreSQL, Drizzle ORM, and MongoDB backends. I utilize TypeScript for type-safety and Tailwind CSS for rapid premium styling."
         }
       },
       {
         "@type": "Question",
-        "name": "Do you handle both frontend and backend work?",
+        "name": "Tell us about your flagship project, ClubVerse.",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, I am a creative full-stack developer. I build beautifully structured client interfaces using modern Next.js/React and Tailwind CSS, as well as highly secure backend API route architectures with Node.js/Express, Mongoose database models, and active MongoDB clusters."
+          "text": "ClubVerse is a full-stack campus community and event management platform. It centralizes student activities, club management, and event organization. Built with Next.js, Supabase, PostgreSQL, and Drizzle ORM, it utilizes role-based access control (RBAC) to provide customized experiences for students, club admins, and super admins."
         }
       },
       {
         "@type": "Question",
-        "name": "How long does a website project usually take?",
+        "name": "How has theatre and music influenced your programming career?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Project schedules fluctuate depending on visual and core structural complexities. A simple aesthetic landing page takes around 1-2 weeks, while a full-scale corporate web application containing comprehensive databases, secure APIs, and edge deployment takes 4-8 weeks."
+          "text": "Theatre and music are core to my creativity. Participating in the Samvaad Theatre Society and Kalakrit Music Club has dramatically improved my public speaking, team collaboration, active listening, and problem-solving skills, allowing me to build user-centric products with structured focus and unique empathy."
         }
       },
       {
         "@type": "Question",
-        "name": "Can you improve my site's SEO and performance?",
+        "name": "Are you open to software developer internships or full-time roles?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Absolutely! I program high-fidelity speed optimizations, implement core web vital fixes (such as lazy-loading assets, layout-shift preventions, and font integrations), and set up absolute standard JSON-LD schema markings (Person, FAQPage, etc.) to boost indexing rates significantly."
+          "text": "Yes! I am actively pursuing my B.Tech in Information Technology (2023-2027) and am open to software engineering internships, full-time developer roles, and freelance contracts where I can build impactful, scalable platforms."
         }
       },
       {
         "@type": "Question",
-        "name": "Do you offer maintenance after my website launches?",
+        "name": "Do you have experience with automated document systems or AI integrations?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, I provide supportive maintenance bundles including system patches, regular security monitoring, content revisions, database backups, and custom walkthrough training tutorials so you can confidently control content changes."
+          "text": "Yes, I built ResumeCraft, which incorporates custom PDF export engines, and I have worked with AI response pipelines utilizing the Gemini API to construct intelligent query handlers in conversational chatbots."
         }
       }
     ]

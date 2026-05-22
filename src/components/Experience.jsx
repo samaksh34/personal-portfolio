@@ -66,7 +66,7 @@ function TimelineCard({ item, index }) {
   );
 }
 
-export default function Experience() {
+export default function Experience({ experienceData }) {
   const containerRef = useRef(null);
 
   // Track progress of container relative to viewport scroll
@@ -85,39 +85,39 @@ export default function Experience() {
   // Calculate high-fidelity height scaling
   const scaleY = useTransform(smoothY, [0, 1], [0, 1]);
 
-  const experienceData = [
+  const dataToRender = experienceData || [
     {
-      company: "Veloce Labs",
-      role: "Lead Full-Stack Architect",
+      company: "Samvaad Theatre Society",
+      role: "Active Member & Coordinator",
+      period: "2023 - PRESENT",
+      highlights: [
+        "Actively participated in multiple college theatre productions, street performances, and competitive stage showcases.",
+        "Developed premium interpersonal communication, active collaboration, and theatrical presentation skills.",
+        "Coordinated logistics and team schedules for stage events, boosting student engagement and performance execution."
+      ],
+      tags: ["Communication", "Collaboration", "Public Speaking", "Creative Direction"],
+    },
+    {
+      company: "Enigma Programming Club",
+      role: "Technical Member",
       period: "2024 - PRESENT",
       highlights: [
-        "Architected high-speed edge storefront APIs syncing globally under 12ms using distributed object cache pools and Pub/Sub brokers.",
-        "Orchestrated reusable micro-frontend systems designed in JavaScript App Router, slashing load times by 42% across corporate applications.",
-        "Spearheaded multi-tenant MongoDB sharding schemas, raising query throughputs to 12k synchronous requests per second."
+        "Contributed to organizing coding events, technical workshops, and hackathons for 300+ students.",
+        "Developed and maintained lightweight technical participant workflows and registration forms.",
+        "Active contributor to club programming repositories, collaborating on standard algorithm sheets."
       ],
-      tags: ["Next.js", "Redis Cache", "MongoDB", "Edge Functions", "Websockets"],
+      tags: ["Algorithms", "Event Coordination", "Technical Support", "Peer Mentoring"],
     },
     {
-      company: "Aether Software",
-      role: "Senior Full-Stack Developer",
-      period: "2022 - 2024",
+      company: "Kalakrit Music Club",
+      role: "Core Team Member",
+      period: "2023 - PRESENT",
       highlights: [
-        "Pioneered customized database migration pipelines using Mongoose APIs, transferring 4.2 million document matrices with zero application downtime.",
-        "Engineered visual layout rendering models mapping canvas frames and customized mechanical coordinate managers.",
-        "Optimized client-side rendering trees in Framer Motion, lifting global Google Lighthouse core web vital metrics to 98% benchmarks."
+        "Assisted in organizing cultural musical performances, vocal events, and stage sound systems.",
+        "Led collaborative coordination across club members to align music setlists and equipment logistics under strict timelines.",
+        "Fostered creative group ideas combining traditional instrumentation with modern digital tracks during college fests."
       ],
-      tags: ["React JS", "Mongoose", "Tailwind CSS", "Canvas API", "Framer Motion"],
-    },
-    {
-      company: "Nexus Creative Studio",
-      role: "Creative Frontend Developer",
-      period: "2020 - 2022",
-      highlights: [
-        "Designed and published high-fashion immersive client marketing pages utilizing custom SVG path drawing animations.",
-        "Created a custom responsive layouts engine that adapts liquid flex boundaries from mobile viewports up to wide-aspect media panels.",
-        "Crafted premium micro-interaction systems using spring-physics matrices, enhancing click engagement rates by 35%."
-      ],
-      tags: ["JavaScript", "HTML5", "Vanilla CSS", "SVG Paths", "Spring Physics"],
+      tags: ["Operational Logistics", "Team Leadership", "Creative Execution", "Sound Engineering"],
     }
   ];
 
@@ -129,7 +129,7 @@ export default function Experience() {
           [ 02 // TIMELINE ]
         </span>
         <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-none">
-          Professional <span className="font-serif italic font-light text-indigo-200">Chronicle</span>
+          Professional & Extracurricular <span className="font-serif italic font-light text-indigo-200">Journey</span>
         </h2>
         <div className="h-[1px] w-24 bg-indigo-500/30 mt-2" />
       </div>
@@ -146,7 +146,7 @@ export default function Experience() {
 
         {/* Timeline Cards Container */}
         <div className="relative">
-          {experienceData.map((item, index) => (
+          {dataToRender.map((item, index) => (
             <TimelineCard key={index} item={item} index={index} />
           ))}
         </div>

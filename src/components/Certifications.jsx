@@ -87,68 +87,54 @@ function CertCard({ cert, index }) {
   );
 }
 
-export default function Certifications() {
-  const certsData = [
+export default function Certifications({ certsData }) {
+  const dataToRender = certsData || [
     {
-      title: "Front-End Developer Professional Certificate",
-      issuer: "Meta Credentials",
-      date: "2025",
-      id: "META-FE-99",
-      link: "https://coursera.org/verify/professional-cert/meta-front-end-developer",
-    },
-    {
-      title: "UX Design Professional Certificate",
-      issuer: "Google Career Certificates",
-      date: "2025",
-      id: "GOOG-UX-73",
-      link: "https://coursera.org/verify/professional-cert/google-ux-design",
-    },
-    {
-      title: "Certified Cloud Practitioner",
-      issuer: "Amazon Web Services (AWS)",
-      date: "2025",
-      id: "AWS-CCP-25",
-      link: "https://aws.amazon.com/verification",
-    },
-    {
-      title: "MongoDB Certified Developer Associate",
-      issuer: "MongoDB University",
+      title: "Smart India Hackathon (SIH) 2024 Participant",
+      issuer: "AICTE / Govt of India",
       date: "2024",
-      id: "MDB-CDA-48",
-      link: "https://university.mongodb.com/certification",
+      id: "SIH-2024-SAM",
+      link: "https://sih.gov.in"
     },
     {
-      title: "Full-Stack Web Development Specialization",
-      issuer: "Coursera / HKUST",
-      date: "2024",
-      id: "CRT-FSWD-12",
-      link: "https://coursera.org/verify/specialization/full-stack-web-development",
+      title: "Core Team Member — Kalakrit Music Club",
+      issuer: "ABES Engineering College",
+      date: "2023 - PRESENT",
+      id: "ABES-KMC-09",
+      link: "#"
     },
     {
-      title: "Responsive Web Design Certification",
-      issuer: "freeCodeCamp Org",
-      date: "2023",
-      id: "FCC-RWD-07",
-      link: "https://freecodecamp.org/certification",
+      title: "Technical Member — Enigma Programming Club",
+      issuer: "ABES Engineering College",
+      date: "2024 - PRESENT",
+      id: "ABES-EPC-12",
+      link: "#"
     },
+    {
+      title: "Active Member — Samvaad Theatre Society",
+      issuer: "ABES Engineering College",
+      date: "2023 - PRESENT",
+      id: "ABES-STS-05",
+      link: "#"
+    }
   ];
 
   return (
-    <section id="certifications" className="relative py-32 px-6 sm:px-12 max-w-7xl mx-auto">
+    <section id="achievements" className="relative py-32 px-6 sm:px-12 max-w-7xl mx-auto">
       {/* Section Header */}
       <div className="flex flex-col items-start gap-4">
         <span className="font-mono text-xs tracking-widest text-indigo-400 uppercase">
-          [ 04 // PROFESSIONAL CREDENTIALS ]
+          [ 04 // MILESTONES & LEADERSHIP ]
         </span>
         <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-none">
-          Verified <span className="font-serif italic font-light text-indigo-200">Certifications</span>
+          Key Achievements & <span className="font-serif italic font-light text-indigo-200">Milestones</span>
         </h2>
         <div className="h-[1px] w-24 bg-indigo-500/30 mt-2" />
       </div>
 
       {/* Grid of Certifications */}
       <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
-        {certsData.map((cert, index) => (
+        {dataToRender.map((cert, index) => (
           <CertCard key={cert.title} cert={cert} index={index} />
         ))}
       </div>

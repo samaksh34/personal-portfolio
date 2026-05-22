@@ -60,30 +60,30 @@ function FAQItem({ item, isOpen, onClick, index }) {
   );
 }
 
-export default function FAQ() {
+export default function FAQ({ faqData }) {
   const [openIndex, setOpenIndex] = useState(null);
 
-  const faqData = [
+  const dataToRender = faqData || [
     {
-      question: "What does your standard website design package include?",
-      answer: "My standard package includes fully responsive layouts, state-of-the-art visual aesthetics, physics-based micro-interactions, thorough search engine optimization (SEO), fast load-speed parameters, cross-browser support, and high-performance clean reusable components. I also bundle in complete documented code files and support guides.",
+      question: "What is your primary full-stack technology stack?",
+      answer: "I specialize in building React/Next.js frontend applications integrated with Supabase, PostgreSQL, Drizzle ORM, and MongoDB backends. I utilize TypeScript for type-safety and Tailwind CSS for rapid premium styling."
     },
     {
-      question: "Do you handle both frontend and backend work?",
-      answer: "Yes, I am a creative full-stack developer. I build beautifully structured client interfaces using modern Next.js/React and Tailwind CSS, as well as highly secure backend API route architectures with Node.js/Express, Mongoose database models, and active MongoDB clusters.",
+      question: "Tell us about your flagship project, ClubVerse.",
+      answer: "ClubVerse is a full-stack campus community and event management platform. It centralizes student activities, club management, and event organization. Built with Next.js, Supabase, PostgreSQL, and Drizzle ORM, it utilizes role-based access control (RBAC) to provide customized experiences for students, club admins, and super admins."
     },
     {
-      question: "How long does a website project usually take?",
-      answer: "Project schedules fluctuate depending on visual and core structural complexities. A simple aesthetic landing page takes around 1-2 weeks, while a full-scale corporate web application containing comprehensive databases, secure APIs, and edge deployment takes 4-8 weeks.",
+      question: "How has theatre and music influenced your programming career?",
+      answer: "Theatre and music are core to my creativity. Participating in the Samvaad Theatre Society and Kalakrit Music Club has dramatically improved my public speaking, team collaboration, active listening, and problem-solving skills, allowing me to build user-centric products with structured focus and unique empathy."
     },
     {
-      question: "Can you improve my site's SEO and performance?",
-      answer: "Absolutely! I program high-fidelity speed optimizations, implement core web vital fixes (such as lazy-loading assets, layout-shift preventions, and font integrations), and set up absolute standard JSON-LD schema markings (Person, FAQPage, etc.) to boost indexing rates significantly.",
+      question: "Are you open to software developer internships or full-time roles?",
+      answer: "Yes! I am actively pursuing my B.Tech in Information Technology (2023-2027) and am open to software engineering internships, full-time developer roles, and freelance contracts where I can build impactful, scalable platforms."
     },
     {
-      question: "Do you offer maintenance after my website launches?",
-      answer: "Yes, I provide supportive maintenance bundles including system patches, regular security monitoring, content revisions, database backups, and custom walkthrough training tutorials so you can confidently control content changes.",
-    },
+      question: "Do you have experience with automated document systems or AI integrations?",
+      answer: "Yes, I built ResumeCraft, which incorporates custom PDF export engines, and I have worked with AI response pipelines utilizing the Gemini API to construct intelligent query handlers in conversational chatbots."
+    }
   ];
 
   return (
@@ -101,7 +101,7 @@ export default function FAQ() {
 
       {/* Accordion List */}
       <div className="mt-16 flex flex-col gap-4 relative z-10">
-        {faqData.map((item, index) => (
+        {dataToRender.map((item, index) => (
           <FAQItem
             key={item.question}
             item={item}
