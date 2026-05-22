@@ -1,129 +1,268 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Code, GitPullRequest } from "lucide-react";
+import { ArrowRight, Download, Terminal, Cpu, Layers, Laptop, Pencil, Code2, Database, Shield, BookOpen, Compass, ChevronRight } from "lucide-react";
 
 export default function Hero({ personalInfo }) {
-  const { name, title, subHeading, tagline } = personalInfo || {
+  const { name, title, subHeading, tagline, aboutLong } = personalInfo || {
     name: "Samaksh Saxena",
     title: "Full-Stack Developer & Product Builder",
     subHeading: "Building scalable web platforms with modern full-stack technologies.",
     tagline: "Passionate full-stack developer focused on building scalable platforms, intuitive interfaces, and impactful digital products."
   };
 
-  // Cinematic staggering fade-reveal coordinate settings
+  // Stagger animation settings
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
         delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 35, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 1.2,
-        ease: [0.16, 1, 0.3, 1], // Premium decrescendo bezier
+        duration: 1.0,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   };
 
   return (
-    <section 
-      id="home" 
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden py-32 px-6 sm:px-12"
-    >
-      {/* Visual Radial Glowing Aura in the background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 h-[700px] w-[700px] rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.06)_0%,rgba(139,92,246,0.02)_40%,rgba(6,182,212,0.01)_65%,transparent_100%)] blur-3xl" />
-
-      {/* Decorative vertical lines on sides to create Linear-style layout grid structure */}
-      <div className="absolute left-8 sm:left-16 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/5 to-transparent pointer-events-none hidden md:block" />
-      <div className="absolute right-8 sm:right-16 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/5 to-transparent pointer-events-none hidden md:block" />
+    <section id="home" className="relative w-full bg-[#030303] text-white pt-36 pb-20 px-6 sm:px-12 md:px-24 xl:px-32 flex flex-col items-center">
+      {/* Dynamic Grid Overlay inside Section */}
+      <div className="absolute inset-0 grid-mesh opacity-[0.03] pointer-events-none" />
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 flex flex-col items-center text-center max-w-4xl"
+        className="w-full max-w-5xl flex flex-col items-start text-left relative z-10"
       >
-        {/* Pulsing Status Badge */}
-        <motion.div
-          variants={itemVariants}
-          className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-zinc-950/80 px-4 py-1.5 backdrop-blur-md transition-all hover:border-indigo-500/30 cursor-default"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        {/* Uppercase Monospaced Small Label */}
+        <motion.div variants={itemVariants} className="flex items-center gap-2 mb-6">
+          <span className="font-mono text-[10px] tracking-[0.25em] text-[#85b5ff] uppercase">
+            DIGITAL CRAFTSMAN
           </span>
-          <span className="text-[10px] sm:text-xs font-mono tracking-widest text-zinc-300 uppercase">
-            Available for Full-time Roles & Contracts
-          </span>
+          <span className="h-[1px] w-8 bg-[#85b5ff]/30"></span>
         </motion.div>
 
-        {/* Cinematic Premium Heading */}
+        {/* Massive Bold Serif Title */}
         <motion.h1
           variants={itemVariants}
-          className="mt-8 text-4xl sm:text-6xl md:text-8xl font-semibold tracking-tight text-white leading-[1.08] select-none"
+          className="font-serif text-5xl sm:text-7xl md:text-8xl tracking-tight leading-[1.05] text-white font-semibold max-w-4xl"
         >
-          {name.split(" ")[0]} <span className="font-serif italic font-light text-indigo-200">{name.split(" ")[1]}</span> <br />
-          <span className="font-mono text-zinc-300 text-3xl sm:text-5xl md:text-6xl tracking-tighter align-middle bg-clip-text text-transparent bg-gradient-to-r from-zinc-200 via-zinc-400 to-zinc-500">&lt;Full-Stack Architect&gt;</span>
+          Full-Stack<br />
+          Architect &<br />
+          Digital Artisan<span className="text-[#85b5ff]">.</span>
         </motion.h1>
 
-        {/* Narrative subtext */}
+        {/* Narrative Description */}
         <motion.p
           variants={itemVariants}
-          className="mt-8 max-w-3xl text-xs sm:text-sm md:text-base leading-relaxed text-zinc-400 font-light"
+          className="mt-8 text-zinc-400 text-sm sm:text-base md:text-lg max-w-2xl font-light leading-relaxed"
         >
-          <span className="block text-indigo-300 font-medium tracking-tight mb-2 text-sm sm:text-base md:text-lg">{subHeading}</span>
-          {tagline}
+          {subHeading || "Building scalable platforms with modern tech and a cinematic eye."} Specialized in high-performance architectures and pixel-perfect developer experiences.
         </motion.p>
 
-        {/* Custom Actions */}
+        {/* Dual Premium Buttons */}
         <motion.div
           variants={itemVariants}
           className="mt-10 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
         >
           <a
-            href="#projects"
-            className="group flex w-full sm:w-auto h-11 items-center justify-center gap-2 rounded-full bg-white px-6 text-xs font-semibold text-black transition-transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-white/5"
-          >
-            Explore My Work
-            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-          </a>
-          
-          <a
             href="#contact"
-            className="group relative flex w-full sm:w-auto h-11 items-center justify-center rounded-full border border-white/10 bg-zinc-950/40 px-6 text-xs font-semibold text-white transition-all hover:bg-white/[0.04] hover:border-white/20 active:scale-[0.98]"
+            className="group flex w-full sm:w-auto h-12 items-center justify-center gap-2.5 rounded-lg bg-[#85b5ff] px-8 text-xs font-mono tracking-widest font-bold uppercase text-black transition-all hover:bg-[#a1c6ff] hover:scale-[1.01] active:scale-[0.98] shadow-lg shadow-[#85b5ff]/10"
           >
-            Get In Touch
-            <span className="absolute -bottom-px left-4 right-4 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <Download className="h-4 w-4" />
+            Download Resume
+          </a>
+
+          <a
+            href="#projects"
+            className="group flex w-full sm:w-auto h-12 items-center justify-center gap-2.5 rounded-lg border border-zinc-800 bg-zinc-950/40 px-8 text-xs font-mono tracking-widest font-semibold uppercase text-zinc-300 transition-all hover:border-zinc-700 hover:text-white hover:bg-zinc-900/30 active:scale-[0.98]"
+          >
+            View Portfolio
           </a>
         </motion.div>
-      </motion.div>
 
-      {/* Grid Coordinates decorative label (Inspired by elite portfolios) */}
-      <div className="absolute bottom-6 left-8 sm:left-16 hidden md:block">
-        <span className="font-mono text-[9px] text-zinc-600 tracking-wider">
-          PORTFOLIO // COORD [54.21, -2.12]
-        </span>
-      </div>
-      
-      {/* Scroll indicator with dynamic delay fade */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.5 }}
-        transition={{ delay: 1.6, duration: 1.2 }}
-        className="absolute bottom-6 right-8 sm:right-16 flex flex-col items-center gap-2 pointer-events-none"
-      >
-        <span className="text-[9px] font-mono tracking-widest text-zinc-500 uppercase">Scroll Down</span>
-        <div className="h-10 w-[1px] bg-gradient-to-b from-zinc-600 to-transparent" />
+        {/* Interactive Stats Grid */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-16 pt-12 border-t border-zinc-900 w-full grid grid-cols-3 gap-6 sm:gap-12 md:gap-16 font-mono max-w-2xl"
+        >
+          <div>
+            <span className="block text-3xl sm:text-5xl font-serif text-white font-medium">02+</span>
+            <span className="block text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest mt-2 leading-snug">
+              Years of<br />Craft
+            </span>
+          </div>
+          <div>
+            <span className="block text-3xl sm:text-5xl font-serif text-white font-medium">12+</span>
+            <span className="block text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest mt-2 leading-snug">
+              Seminal<br />Projects
+            </span>
+          </div>
+          <div>
+            <span className="block text-3xl sm:text-5xl font-serif text-white font-medium">03+</span>
+            <span className="block text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest mt-2 leading-snug">
+              Club Team<br />Roles
+            </span>
+          </div>
+        </motion.div>
+
+        {/* Massive rounded-3xl Cinematic Portrait */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-16 w-full rounded-3xl overflow-hidden aspect-[4/3] sm:aspect-[16/9] border border-white/5 bg-zinc-950 relative group"
+        >
+          <img
+            src="/avatar.png"
+            alt="Samaksh Saxena Cinematic Avatar"
+            className="w-full h-full object-cover filter grayscale contrast-[1.15] brightness-[0.85] transition-all duration-1000 group-hover:scale-[1.02]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
+          <div className="absolute bottom-6 left-6 font-mono text-[9px] sm:text-xs text-zinc-400 tracking-wider flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#85b5ff] animate-pulse"></span>
+            ATELIER AVATAR v1.0.9 // ABES ENGINEERING
+          </div>
+        </motion.div>
+
+        {/* Technical Arsenal Heading */}
+        <motion.div variants={itemVariants} className="w-full mt-32">
+          <h2 className="font-serif text-3xl sm:text-5xl text-white font-medium relative pb-4 inline-block">
+            Technical Arsenal
+            <span className="absolute bottom-0 left-0 w-16 h-[2px] bg-[#85b5ff]"></span>
+          </h2>
+        </motion.div>
+
+        {/* Technical Arsenal Bento Grid Layout */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-12 w-full grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
+          {/* Card 1: Frontend Systems */}
+          <div className="rounded-2xl border border-zinc-900 bg-zinc-950/40 p-8 flex flex-col justify-between hover:border-zinc-800 transition-all duration-500">
+            <div>
+              <div className="h-10 w-10 rounded-xl bg-zinc-900 flex items-center justify-center text-[#85b5ff] mb-6">
+                <Laptop className="h-5 w-5" />
+              </div>
+              <h3 className="font-serif text-2xl text-white font-medium mb-4">Frontend Systems</h3>
+              <p className="text-zinc-500 text-xs sm:text-sm font-light leading-relaxed mb-6">
+                Crafting visual elegance, highly responsive interfaces, dynamic state flows, and smooth interactive design utilizing:
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {["React.js", "Next.js", "TypeScript", "Tailwind CSS", "ES6+"].map((tag) => (
+                <span key={tag} className="font-mono text-[9px] tracking-wider uppercase bg-zinc-900 text-zinc-400 border border-zinc-800/50 px-2.5 py-1 rounded-md">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Card 2: Core Infrastructure */}
+          <div className="rounded-2xl border border-zinc-900 bg-zinc-950/40 p-8 flex flex-col justify-between hover:border-zinc-800 transition-all duration-500">
+            <div>
+              <div className="h-10 w-10 rounded-xl bg-zinc-900 flex items-center justify-center text-[#85b5ff] mb-6">
+                <Terminal className="h-5 w-5" />
+              </div>
+              <h3 className="font-serif text-2xl text-white font-medium mb-4">Core Infrastructure</h3>
+              <p className="text-zinc-500 text-xs sm:text-sm font-light leading-relaxed mb-6">
+                Architecting relational mappings, server-side APIs, token validations, secure databases, and backend services with:
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {["Node.js", "Express.js", "PostgreSQL", "Supabase", "Drizzle ORM", "MongoDB", "JWT Auth"].map((tag) => (
+                <span key={tag} className="font-mono text-[9px] tracking-wider uppercase bg-zinc-900 text-zinc-400 border border-zinc-800/50 px-2.5 py-1 rounded-md">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Card 3: Deep Architectural Values (Double Column) */}
+          <div className="md:col-span-2 rounded-2xl border border-zinc-900 bg-zinc-950/40 p-8 sm:p-10 hover:border-zinc-800 transition-all duration-500">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="font-mono text-[10px] tracking-[0.25em] text-[#85b5ff] uppercase">SYSTEM VALS</span>
+              <span className="h-[1.5px] w-6 bg-[#85b5ff]/30"></span>
+            </div>
+            
+            <div className="space-y-6 sm:space-y-8 font-light text-zinc-400 text-sm sm:text-base leading-relaxed">
+              <div className="flex items-start gap-4">
+                <div className="h-6 w-6 rounded-md bg-zinc-900/60 border border-zinc-800 flex items-center justify-center text-[#85b5ff] mt-0.5 shrink-0 text-xs font-mono">▲</div>
+                <div>
+                  <h4 className="font-mono text-zinc-200 text-xs tracking-wider uppercase font-semibold">Architecture</h4>
+                  <p className="text-zinc-500 text-xs sm:text-sm font-light mt-1">Designing modular, secure, and distributed platform backends with granular role-based access control models at the absolute core.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="h-6 w-6 rounded-md bg-zinc-900/60 border border-zinc-800 flex items-center justify-center text-[#85b5ff] mt-0.5 shrink-0 text-xs font-mono">◆</div>
+                <div>
+                  <h4 className="font-mono text-zinc-200 text-xs tracking-wider uppercase font-semibold">Robust Flows</h4>
+                  <p className="text-zinc-500 text-xs sm:text-sm font-light mt-1">Deploying structured database queries, type-safe database schemas, transaction safeguards, and seamless real-time syncing.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="h-6 w-6 rounded-md bg-zinc-900/60 border border-zinc-800 flex items-center justify-center text-[#85b5ff] mt-0.5 shrink-0 text-xs font-mono">●</div>
+                <div>
+                  <h4 className="font-mono text-zinc-200 text-xs tracking-wider uppercase font-semibold">Artisan Polish</h4>
+                  <p className="text-zinc-500 text-xs sm:text-sm font-light mt-1">Injecting sleek aesthetic compositions, micro-interactions, spring layouts, smooth scrolling physics, and detailed layouts.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Tiny bottom badge mimicking "ATELIER CODE SYSTEM / VERSION 2.0.01" */}
+          <div className="md:col-span-2 rounded-xl border border-zinc-900/40 bg-zinc-950/20 px-6 py-4 flex items-center justify-between font-mono text-[9px] sm:text-xs text-zinc-500">
+            <div className="flex items-center gap-2">
+              <Pencil className="h-3 w-3 text-[#85b5ff]" />
+              <span>ATELIER SYSTEM VER. 2.0.01 // READY</span>
+            </div>
+            <a href="#projects" className="uppercase tracking-widest text-zinc-400 hover:text-[#85b5ff] transition-colors flex items-center gap-1">
+              Scroll for details <ChevronRight className="h-3.5 w-3.5" />
+            </a>
+          </div>
+        </motion.div>
+
+        {/* "Crafting the future, line by line." Quote Section */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-32 w-full border-t border-zinc-900 pt-20 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12"
+        >
+          <div className="md:col-span-5">
+            <h3 className="font-serif text-4xl sm:text-5xl md:text-6xl text-white font-medium leading-[1.1] tracking-tight">
+              Crafting the<br />
+              future, <span className="font-serif italic font-light text-[#85b5ff]">line by line.</span>
+            </h3>
+          </div>
+          <div className="md:col-span-7 flex flex-col items-start">
+            <p className="text-zinc-400 text-sm sm:text-base font-light leading-relaxed">
+              I approach software development as a digital artisan – a space where rigorous engineering precision converges with aesthetic intentionality. My journey began with an innate curiosity for how distributed systems operate and scale, which has evolved into building high-utility, performance-driven web ecosystems for thousands of student coordinators.
+            </p>
+            <p className="mt-6 text-zinc-500 text-xs sm:text-sm font-light leading-relaxed">
+              I don't just compile lines of code; I craft immersive digital stories. From security models and modular databases to the exact physics of a spring animation, I ensure every layer is robust, performant, and delightful to interact with.
+            </p>
+            <a
+              href="#journey"
+              className="mt-8 font-mono text-[10px] sm:text-xs tracking-widest font-semibold uppercase text-[#85b5ff] hover:text-white flex items-center gap-2 group transition-colors"
+            >
+              Read the full story
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+        </motion.div>
+
       </motion.div>
     </section>
   );
 }
+

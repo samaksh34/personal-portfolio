@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, HelpCircle } from "lucide-react";
 
 function FAQItem({ item, isOpen, onClick, index }) {
   return (
@@ -9,36 +8,33 @@ function FAQItem({ item, isOpen, onClick, index }) {
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-      className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
-        isOpen
-          ? "border-indigo-500/25 bg-indigo-500/[0.02]"
-          : "border-white/5 bg-zinc-950/20 hover:border-white/10"
-      }`}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className="border-b border-zinc-900 w-full"
     >
       {/* FAQ Header Click Trigger */}
       <button
         onClick={onClick}
-        className="flex w-full items-start justify-between gap-4 p-5 sm:p-6 text-left"
+        className="flex w-full items-center justify-between gap-6 py-7 text-left cursor-pointer group relative overflow-hidden"
       >
-        <div className="flex gap-4">
-          <HelpCircle className={`h-5 w-5 shrink-0 mt-0.5 transition-colors duration-300 ${
-            isOpen ? "text-indigo-400" : "text-zinc-500"
-          }`} />
-          <h3 className={`text-sm sm:text-base font-semibold tracking-tight transition-colors duration-300 ${
-            isOpen ? "text-white" : "text-zinc-300"
+        <div className="flex items-center gap-6">
+          {/* Index Counter */}
+          <span className="font-mono text-xs text-zinc-600 group-hover:text-[#85b5ff] transition-colors duration-300">
+            [ 0{index + 1} ]
+          </span>
+          {/* Question Text */}
+          <h3 className={`font-serif text-lg sm:text-xl md:text-2xl transition-colors duration-300 ${
+            isOpen ? "text-[#85b5ff]" : "text-zinc-200 group-hover:text-white"
           }`}>
             {item.question}
           </h3>
         </div>
         
-        <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
-          isOpen
-            ? "border-indigo-500/30 bg-indigo-500/10 text-indigo-400 rotate-180"
-            : "border-white/10 bg-zinc-900/60 text-zinc-400 hover:text-white"
+        {/* Editorial Textual Indicator */}
+        <span className={`font-mono text-xs transition-colors duration-300 select-none ${
+          isOpen ? "text-[#85b5ff]" : "text-zinc-500 group-hover:text-white"
         }`}>
-          {isOpen ? <Minus className="h-3.5 w-3.5" /> : <Plus className="h-3.5 w-3.5" />}
-        </div>
+          {isOpen ? "[ — ]" : "[ + ]"}
+        </span>
       </button>
 
       {/* Accordion Expandable Answer */}
@@ -48,9 +44,10 @@ function FAQItem({ item, isOpen, onClick, index }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
           >
-            <div className="px-5 pb-6 sm:px-6 sm:pb-7 pl-14 text-xs sm:text-sm leading-relaxed text-zinc-400 font-light max-w-2xl border-t border-white/[0.02] pt-4">
+            <div className="pb-8 pl-12 pr-6 text-zinc-400 text-xs sm:text-sm md:text-base font-light leading-relaxed max-w-3xl">
               {item.answer}
             </div>
           </motion.div>
@@ -86,31 +83,82 @@ export default function FAQ({ faqData }) {
     }
   ];
 
-  return (
-    <section id="faq" className="relative py-32 px-6 sm:px-12 max-w-4xl mx-auto">
-      {/* Section Header */}
-      <div className="flex flex-col items-center text-center gap-4">
-        <span className="font-mono text-xs tracking-widest text-indigo-400 uppercase">
-          [ 05 // COMMON RECIPROCAL QUESTIONS ]
-        </span>
-        <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-none">
-          Frequently Asked <span className="font-serif italic font-light text-indigo-200">Questions</span>
-        </h2>
-        <div className="h-[1px] w-24 bg-indigo-500/30 mt-2" />
-      </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
+    },
+  };
 
-      {/* Accordion List */}
-      <div className="mt-16 flex flex-col gap-4 relative z-10">
-        {dataToRender.map((item, index) => (
-          <FAQItem
-            key={item.question}
-            item={item}
-            isOpen={openIndex === index}
-            onClick={() => setOpenIndex(openIndex === index ? null : index)}
-            index={index}
-          />
-        ))}
-      </div>
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
+
+  return (
+    <section id="faq" className="relative w-full bg-[#030303] text-white py-28 px-6 sm:px-12 md:px-24 xl:px-32 flex flex-col items-center">
+      {/* Decorative Grid Overlay */}
+      <div className="absolute inset-0 grid-mesh opacity-[0.025] pointer-events-none" />
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="w-full max-w-5xl flex flex-col items-start text-left relative z-10"
+      >
+        {/* Section Header */}
+        <motion.div variants={itemVariants} className="flex items-center gap-2 mb-6">
+          <span className="font-mono text-[10px] tracking-[0.25em] text-[#85b5ff] uppercase">
+            COMMON INQUIRIES // FAQS
+          </span>
+          <span className="h-[1px] w-8 bg-[#85b5ff]/30"></span>
+        </motion.div>
+
+        {/* Title */}
+        <motion.h2
+          variants={itemVariants}
+          className="font-serif text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.08] text-white font-medium max-w-3xl"
+        >
+          Frequently Resolved <br />
+          <span className="font-serif italic font-light text-[#85b5ff]">Queries</span><span className="text-[#85b5ff]">.</span>
+        </motion.h2>
+
+        {/* Description */}
+        <motion.p
+          variants={itemVariants}
+          className="mt-6 text-zinc-500 text-sm sm:text-base max-w-2xl font-light leading-relaxed"
+        >
+          Clear explanations regarding technical decisions, academic timelines, institutional leadership details, and career objectives.
+        </motion.p>
+
+        {/* Minimal Accordion List */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-20 w-full flex flex-col border-t border-zinc-900"
+        >
+          {dataToRender.map((item, index) => (
+            <FAQItem
+              key={item.question}
+              item={item}
+              isOpen={openIndex === index}
+              onClick={() => setOpenIndex(openIndex === index ? null : index)}
+              index={index}
+            />
+          ))}
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

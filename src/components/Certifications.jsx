@@ -1,91 +1,6 @@
 "use client";
-import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Award, ExternalLink, Calendar, ShieldCheck } from "lucide-react";
-
-function CertCard({ cert, index }) {
-  const cardRef = useRef(null);
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    setCoords({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-  };
-
-  return (
-    <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative overflow-hidden rounded-2xl border border-white/5 bg-zinc-950/40 p-5 hover:border-zinc-800/80 transition-all duration-500 flex flex-col justify-between"
-    >
-      {/* Spotlight follow glow */}
-      {isHovered && (
-        <div
-          className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300"
-          style={{
-            background: `radial-gradient(250px circle at ${coords.x}px ${coords.y}px, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.01) 40%, transparent 80%)`,
-          }}
-        />
-      )}
-
-      {/* Decorative static small background blur */}
-      <div className="absolute -right-8 -bottom-8 pointer-events-none z-0 h-24 w-24 rounded-full bg-radial from-indigo-500/5 to-transparent blur-xl group-hover:scale-125 transition-transform duration-700" />
-
-      <div className="relative z-10 flex gap-4">
-        {/* Award Icon Badge */}
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-zinc-900/60 text-zinc-400 group-hover:text-indigo-400 group-hover:border-indigo-500/20 transition-all duration-300">
-          <Award className="h-4.5 w-4.5" />
-        </div>
-
-        {/* Certificate Title and Info */}
-        <div className="flex flex-col">
-          <span className="font-mono text-[9px] tracking-wider text-indigo-400 uppercase font-medium">
-            {cert.issuer}
-          </span>
-          <h3 className="text-sm sm:text-base font-semibold text-white tracking-tight leading-tight mt-1 group-hover:text-indigo-200 transition-colors duration-300">
-            {cert.title}
-          </h3>
-          
-          <div className="mt-3 flex items-center gap-1.5 text-zinc-500 text-[10px] font-mono">
-            <Calendar className="h-3 w-3" />
-            <span>{cert.date}</span>
-            <span className="text-zinc-700">//</span>
-            <ShieldCheck className="h-3 w-3 text-emerald-500/70" />
-            <span className="text-emerald-500/70 uppercase">Verified</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Action details link */}
-      <div className="relative z-10 mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-        <span className="text-[9px] font-mono text-zinc-600 tracking-widest uppercase">
-          ID // {cert.id}
-        </span>
-        
-        <a
-          href={cert.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-[10px] font-semibold font-mono text-zinc-400 group-hover:text-white transition-colors duration-300"
-        >
-          Verify Credential
-          <ExternalLink className="h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </a>
-      </div>
-    </motion.div>
-  );
-}
+import { ShieldCheck, ArrowUpRight, Award } from "lucide-react";
 
 export default function Certifications({ certsData }) {
   const dataToRender = certsData || [
@@ -119,25 +34,120 @@ export default function Certifications({ certsData }) {
     }
   ];
 
-  return (
-    <section id="achievements" className="relative py-32 px-6 sm:px-12 max-w-7xl mx-auto">
-      {/* Section Header */}
-      <div className="flex flex-col items-start gap-4">
-        <span className="font-mono text-xs tracking-widest text-indigo-400 uppercase">
-          [ 04 // MILESTONES & LEADERSHIP ]
-        </span>
-        <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-none">
-          Key Achievements & <span className="font-serif italic font-light text-indigo-200">Milestones</span>
-        </h2>
-        <div className="h-[1px] w-24 bg-indigo-500/30 mt-2" />
-      </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+      },
+    },
+  };
 
-      {/* Grid of Certifications */}
-      <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
-        {dataToRender.map((cert, index) => (
-          <CertCard key={cert.title} cert={cert} index={index} />
-        ))}
-      </div>
+  const itemVariants = {
+    hidden: { y: 15, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
+
+  return (
+    <section id="achievements" className="relative w-full bg-[#030303] text-white py-28 px-6 sm:px-12 md:px-24 xl:px-32 flex flex-col items-center">
+      {/* Decorative Grid Overlay */}
+      <div className="absolute inset-0 grid-mesh opacity-[0.025] pointer-events-none" />
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="w-full max-w-5xl flex flex-col items-start text-left relative z-10"
+      >
+        {/* Section Header */}
+        <motion.div variants={itemVariants} className="flex items-center gap-2 mb-6">
+          <span className="font-mono text-[10px] tracking-[0.25em] text-[#85b5ff] uppercase">
+            SYSTEM CREDENTIALS // MILESTONES
+          </span>
+          <span className="h-[1px] w-8 bg-[#85b5ff]/30"></span>
+        </motion.div>
+
+        {/* Title */}
+        <motion.h2
+          variants={itemVariants}
+          className="font-serif text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.08] text-white font-medium max-w-3xl"
+        >
+          Academic & <br />
+          Professional <span className="font-serif italic font-light text-[#85b5ff]">Registry</span><span className="text-[#85b5ff]">.</span>
+        </motion.h2>
+
+        {/* Description */}
+        <motion.p
+          variants={itemVariants}
+          className="mt-6 text-zinc-500 text-sm sm:text-base max-w-2xl font-light leading-relaxed"
+        >
+          A comprehensive ledger of verified technical achievements, organizational milestones, and institutional leadership appointments.
+        </motion.p>
+
+        {/* Archival Ledger Table */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-20 w-full flex flex-col border-t border-zinc-900"
+        >
+          {dataToRender.map((cert, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="group w-full py-8 border-b border-zinc-900 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-zinc-950/20 px-4 transition-all duration-300 relative overflow-hidden"
+            >
+              {/* Background Micro Glow */}
+              <div className="absolute -right-6 -bottom-6 w-20 h-20 rounded-full bg-[#85b5ff]/[0.01] filter blur-lg pointer-events-none transition-all duration-500 group-hover:scale-150" />
+
+              {/* Left Cell: Index & Date */}
+              <div className="flex items-center gap-6 shrink-0">
+                <span className="font-mono text-[10px] text-zinc-600">0{index + 1}</span>
+                <span className="font-mono text-[9px] sm:text-[10px] tracking-wider text-zinc-500 uppercase">{cert.date}</span>
+              </div>
+
+              {/* Middle Cell: Title & Issuer */}
+              <div className="flex-1 flex flex-col gap-1.5 md:pl-6">
+                <span className="font-mono text-[9px] tracking-widest text-[#85b5ff] uppercase">
+                  {cert.issuer}
+                </span>
+                <h3 className="font-serif text-lg sm:text-xl text-zinc-100 font-medium tracking-tight group-hover:text-[#85b5ff] transition-colors duration-300">
+                  {cert.title}
+                </h3>
+              </div>
+
+              {/* Right Cell: Details & Action */}
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 md:justify-end shrink-0">
+                <span className="font-mono text-[9px] text-zinc-600 tracking-wider">
+                  ID // {cert.id}
+                </span>
+                <div className="flex items-center gap-1 text-[9px] font-mono text-[#85b5ff] bg-[#85b5ff]/5 border border-[#85b5ff]/10 px-2 py-0.5 rounded">
+                  <ShieldCheck className="h-3 w-3" />
+                  <span className="uppercase tracking-widest">Verified</span>
+                </div>
+                
+                <a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[10px] font-mono text-zinc-400 group-hover:text-white transition-colors duration-300 border border-zinc-800 bg-zinc-900/40 hover:bg-zinc-900 px-3 py-1.5 rounded-lg group-hover:border-zinc-700 cursor-pointer"
+                >
+                  Verify
+                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
