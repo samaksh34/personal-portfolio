@@ -37,10 +37,10 @@ if (!MONGODB_URI) {
 // Since ES Modules are used in Next.js, we will recreate the fallback data inside this script to avoid Node ESM imports resolution complexity in pure CommonJS execution.
 const portfolioData = {
   personalInfo: {
-    name: "Samaksh Saxena",
-    title: "Full-Stack Developer & Product Builder",
-    subHeading: "Building scalable web platforms with modern full-stack technologies.",
-    tagline: "Passionate full-stack developer focused on building scalable platforms, intuitive interfaces, and impactful digital products.",
+    name: "Nitin Chugh",
+    title: "Full-Stack Developer",
+    subHeading: "I build responsive, user-focused web applications with clean UI and modern animations — blending design and functionality for seamless user experiences.",
+    tagline: "I build responsive, user-focused web applications with clean UI and modern animations — blending design and functionality for seamless user experiences.",
     aboutLong: "I’m Samaksh Saxena, a full-stack developer currently pursuing my B.Tech in Information Technology at ABES Engineering College, Ghaziabad. I enjoy building scalable digital products that solve real-world problems while maintaining a strong focus on user experience and modern interface design.\n\nMy development journey started with frontend development and gradually evolved into full-stack application architecture involving authentication systems, relational databases, role-based access control, and scalable backend workflows. I actively work with technologies like Next.js, React, TypeScript, Tailwind CSS, Supabase, PostgreSQL, and Drizzle ORM.\n\nBeyond development, I’m also involved in theatre and music societies, which has helped me improve creativity, communication, collaboration, and presentation skills. I enjoy combining technical problem-solving with creative thinking to build products that are both functional and engaging.\n\nCurrently, I’m focused on building large-scale platform-based projects like ClubVerse, a multi-role campus ecosystem platform designed to improve student engagement, club management, and event coordination.",
     aboutShort: "Full-stack developer passionate about building scalable web platforms, modern UI experiences, and real-world digital products using modern technologies.",
     recruiterLine: "Full-stack developer focused on building scalable digital platforms with modern architectures, intuitive user experiences, and real-world problem-solving approaches.",

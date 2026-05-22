@@ -29,34 +29,34 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-6 left-1/2 z-50 w-11/12 max-w-5xl -translate-x-1/2 rounded-full border transition-all duration-500 ${
+        className={`fixed top-6 left-1/2 z-50 w-[94%] max-w-7xl -translate-x-1/2 rounded-[20px] border transition-all duration-500 ${
           scrolled || isOpen
-            ? "border-white/10 bg-black/80 shadow-[0_12px_40px_rgba(0,0,0,0.6)] backdrop-blur-md"
-            : "border-white/5 bg-transparent"
+            ? "border-white/10 bg-black/85 shadow-[0_20px_50px_rgba(0,0,0,0.7)] backdrop-blur-lg py-1.5"
+            : "border-white/5 bg-zinc-950/45 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-md py-3"
         }`}
       >
-        <div className="flex items-center justify-between px-6 py-2.5">
+        <div className="flex items-center justify-between px-8 py-3.5 sm:px-10 transition-all duration-500">
           {/* Atelier Brand Logo */}
-          <a href="#home" className="flex items-center gap-2 text-white font-semibold tracking-widest text-xs font-mono uppercase group">
-            <Compass className="h-4 w-4 text-zinc-400 group-hover:text-[#85b5ff] transition-colors" />
+          <a href="#home" className="flex items-center gap-2.5 text-white font-bold tracking-[0.2em] text-sm font-mono uppercase group">
+            <Compass className="h-5 w-5 text-zinc-400 group-hover:text-[#85b5ff] transition-all duration-500 group-hover:rotate-45" />
             <span>ATELIER.DEV</span>
           </a>
 
           {/* Centered Navigation */}
-          <nav className="hidden md:flex items-center gap-1 sm:gap-2">
+          <nav className="hidden md:flex items-center gap-2">
             {navItems.map((item, index) => (
               <a
                 key={item.label}
                 href={item.href}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="relative rounded-full px-3 py-1.5 text-xs font-mono tracking-wider uppercase text-zinc-400 transition-colors hover:text-white"
+                className="relative rounded-xl px-4 py-2 text-xs font-mono tracking-widest uppercase text-zinc-400 transition-colors hover:text-white"
               >
                 {hoveredIndex === index && (
                   <motion.span
                     layoutId="navHover"
-                    className="absolute inset-0 z-0 rounded-full bg-white/[0.06] border border-white/[0.04]"
-                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    className="absolute inset-0 z-0 rounded-xl bg-[#85b5ff]/10 border border-[#85b5ff]/15"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
                 <span className="relative z-10">{item.label}</span>
@@ -68,7 +68,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <a
               href="#contact"
-              className="hidden sm:inline-flex h-9 items-center justify-center rounded-full bg-[#85b5ff] px-5 text-[11px] font-mono tracking-widest font-semibold uppercase text-black transition-transform hover:scale-[1.03] active:scale-[0.97] hover:bg-[#a1c6ff] shadow-md shadow-[#85b5ff]/10"
+              className="hidden sm:inline-flex h-11 items-center justify-center rounded-xl bg-[#85b5ff] px-6 text-xs font-mono tracking-widest font-bold uppercase text-black transition-all hover:scale-[1.02] active:scale-[0.98] hover:bg-[#a1c6ff] shadow-lg shadow-[#85b5ff]/10"
             >
               Resume
             </a>
@@ -76,10 +76,10 @@ export default function Navbar() {
             {/* Mobile Burger Trigger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="flex md:hidden h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-zinc-950/80 text-zinc-400 hover:text-white transition-colors focus:outline-none"
+              className="flex md:hidden h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-zinc-950/80 text-zinc-400 hover:text-white transition-colors focus:outline-none"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
@@ -93,10 +93,10 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-x-0 top-[90px] z-40 mx-auto w-11/12 rounded-3xl border border-white/10 bg-black/95 p-6 shadow-[0_20px_50px_rgba(0,0,0,0.9)] backdrop-blur-xl md:hidden overflow-y-auto"
+            className="fixed inset-x-0 top-[105px] z-40 mx-auto w-11/12 rounded-[24px] border border-white/10 bg-black/95 p-6 shadow-[0_25px_60px_rgba(0,0,0,0.9)] backdrop-blur-xl md:hidden overflow-y-auto"
           >
-            <div className="absolute inset-0 grid-mesh opacity-[0.03] pointer-events-none rounded-3xl" />
-            <nav className="flex flex-col gap-2 relative z-10 font-mono">
+            <div className="absolute inset-0 grid-mesh opacity-[0.03] pointer-events-none rounded-[24px]" />
+            <nav className="flex flex-col gap-2.5 relative z-10 font-mono">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.label}
@@ -105,16 +105,16 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05, duration: 0.3 }}
-                  className="flex w-full items-center justify-between rounded-2xl border border-white/[0.03] bg-zinc-950/40 px-5 py-3.5 text-xs tracking-wider uppercase text-zinc-400 hover:text-white hover:bg-zinc-900/30 hover:border-white/10 transition-all"
+                  className="flex w-full items-center justify-between rounded-xl border border-white/[0.03] bg-zinc-950/40 px-5 py-4 text-xs tracking-wider uppercase text-zinc-400 hover:text-white hover:bg-zinc-900/30 hover:border-white/10 transition-all"
                 >
                   <span>{item.label}</span>
-                  <span className="text-[9px] text-zinc-600">0{index + 1}</span>
+                  <span className="text-[9px] text-[#85b5ff]">0{index + 1}</span>
                 </motion.a>
               ))}
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="flex w-full items-center justify-center rounded-2xl bg-[#85b5ff] py-4.5 mt-3 text-xs tracking-wider uppercase font-semibold text-black transition-all hover:bg-[#a1c6ff]"
+                className="flex w-full items-center justify-center rounded-xl bg-[#85b5ff] py-4 mt-3 text-xs tracking-wider uppercase font-semibold text-black transition-all hover:bg-[#a1c6ff]"
               >
                 Download Resume
               </a>

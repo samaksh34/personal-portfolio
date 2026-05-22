@@ -107,7 +107,7 @@ export default function FAQ({ faqData }) {
   };
 
   return (
-    <section id="faq" className="relative w-full bg-[#030303] text-white py-28 px-6 sm:px-12 md:px-24 xl:px-32 flex flex-col items-center">
+    <section id="faq" className="relative w-full bg-[#030303] text-white py-28 px-6 sm:px-12 md:px-16 xl:px-20 flex flex-col items-center">
       {/* Decorative Grid Overlay */}
       <div className="absolute inset-0 grid-mesh opacity-[0.025] pointer-events-none" />
 
@@ -116,7 +116,7 @@ export default function FAQ({ faqData }) {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="w-full max-w-5xl flex flex-col items-start text-left relative z-10"
+        className="w-full max-w-6xl flex flex-col items-start text-left relative z-10"
       >
         {/* Section Header */}
         <motion.div variants={itemVariants} className="flex items-center gap-2 mb-6">

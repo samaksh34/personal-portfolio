@@ -96,7 +96,7 @@ export default function Contact({ contactInfo, recruiterLine }) {
   };
 
   return (
-    <section id="contact" className="relative w-full bg-[#030303] text-white py-28 px-6 sm:px-12 md:px-24 xl:px-32 flex flex-col items-center overflow-hidden border-t border-zinc-950">
+    <section id="contact" className="relative w-full bg-[#030303] text-white py-28 px-6 sm:px-12 md:px-16 xl:px-20 flex flex-col items-center overflow-hidden border-t border-zinc-950">
       {/* Visual background radial aura */}
       <div className="absolute -bottom-64 left-1/2 -translate-x-1/2 pointer-events-none z-0 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle_at_center,rgba(133,181,255,0.025)_0%,transparent_80%)] blur-3xl" />
 
@@ -108,7 +108,7 @@ export default function Contact({ contactInfo, recruiterLine }) {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="w-full max-w-5xl flex flex-col items-start text-left relative z-10"
+        className="w-full max-w-6xl flex flex-col items-start text-left relative z-10"
       >
         {/* Section Header */}
         <motion.div variants={itemVariants} className="flex items-center gap-2 mb-6">

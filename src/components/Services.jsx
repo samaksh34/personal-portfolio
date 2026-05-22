@@ -126,12 +126,12 @@ export default function Services({ servicesData }) {
   ];
 
   return (
-    <section id="capabilities" className="relative py-28 px-6 sm:px-12 md:px-24 xl:px-32 flex flex-col items-center">
+    <section id="capabilities" className="relative py-28 px-6 sm:px-12 md:px-16 xl:px-20 flex flex-col items-center">
       {/* Decorative Radial glow behind section */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle_at_center,rgba(133,181,255,0.02)_0%,transparent_100%)] blur-3xl" />
       <div className="absolute inset-0 grid-mesh opacity-[0.015] pointer-events-none" />
 
-      <div className="w-full max-w-5xl flex flex-col items-start text-left relative z-10">
+      <div className="w-full max-w-6xl flex flex-col items-start text-left relative z-10">
         {/* Section Header */}
         <div className="flex items-center gap-2 mb-6">
           <span className="font-mono text-[10px] tracking-[0.25em] text-[#85b5ff] uppercase">
