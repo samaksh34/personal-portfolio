@@ -4,6 +4,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Spotlight from "@/components/Spotlight";
 import NoiseOverlay from "@/components/NoiseOverlay";
 import Navbar from "@/components/Navbar";
+import ResumeModal from "@/components/ResumeModal";
 
 // modern sans heading font
 const outfit = Outfit({
@@ -239,6 +240,7 @@ export default function RootLayout({ children }) {
           <NoiseOverlay />
           <Spotlight />
           <Navbar />
+          <ResumeModal />
           <div className="relative z-20 flex flex-col min-h-screen">
             {children}
           </div>
