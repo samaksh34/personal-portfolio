@@ -254,8 +254,8 @@ export default function Hero({ personalInfo }) {
               {/* Tech Crosshair Accent Bottom-Right */}
               <div className="absolute -bottom-4 -right-4 w-6 h-6 border-b-2 border-r-2 border-[#85b5ff]/40 pointer-events-none transition-all duration-500 group-hover:translate-x-1 group-hover:translate-y-1" />
 
-              {/* Creative Frame Wrapper with Asymmetric Organic Shape and hover morphing */}
-              <div className="relative w-64 sm:w-72 aspect-[3/4] overflow-hidden bg-zinc-950 border border-white/10 rounded-tl-[5rem] rounded-br-[5rem] rounded-tr-2xl rounded-bl-2xl transition-all duration-700 ease-out group-hover:rounded-tl-2xl group-hover:rounded-br-2xl group-hover:rounded-tr-[5rem] group-hover:rounded-bl-[5rem] group-hover:border-[#85b5ff]/40">
+              {/* Sleek Professional Portrait Card Frame with subtle hover interactions */}
+              <div className="relative w-72 sm:w-80 lg:w-[350px] aspect-[3/4] overflow-hidden bg-zinc-950 border border-white/10 rounded-3xl transition-all duration-700 ease-out group-hover:border-[#85b5ff]/40 group-hover:scale-[1.01]">
                 
                 {/* Image container inside the asymmetric frame */}
                 <img
@@ -279,7 +279,7 @@ export default function Hero({ personalInfo }) {
               </div>
 
               {/* Secondary Offset Border Overlay (rotates slightly on hover) */}
-              <div className="absolute -inset-2 border border-[#85b5ff]/20 rounded-tl-[5.2rem] rounded-br-[5.2rem] rounded-tr-[1.7rem] rounded-bl-[1.7rem] pointer-events-none transition-all duration-700 group-hover:rotate-3 group-hover:border-[#85b5ff]/40" />
+              <div className="absolute -inset-2.5 border border-[#85b5ff]/15 rounded-[28px] pointer-events-none transition-all duration-700 group-hover:rotate-2 group-hover:border-[#85b5ff]/35 group-hover:scale-[1.02]" />
             </motion.div>
           </div>
         </div>
