@@ -37,7 +37,7 @@ if (!MONGODB_URI) {
 // Since ES Modules are used in Next.js, we will recreate the fallback data inside this script to avoid Node ESM imports resolution complexity in pure CommonJS execution.
 const portfolioData = {
   personalInfo: {
-    name: "Nitin Chugh",
+    name: "Samaksh Saxena",
     title: "Full-Stack Developer",
     subHeading: "I build responsive, user-focused web applications with clean UI and modern animations — blending design and functionality for seamless user experiences.",
     tagline: "I build responsive, user-focused web applications with clean UI and modern animations — blending design and functionality for seamless user experiences.",
@@ -293,16 +293,16 @@ async function runSeed() {
   try {
     await mongoose.connect(MONGODB_URI);
     console.log("MongoDB connection established successfully.");
-    
+
     console.log("Cleaning pre-existing Profile collections...");
     await Profile.deleteMany({});
     console.log("Cleaned Profile collections.");
-    
+
     console.log("Seeding Samaksh Saxena's high-fidelity profile data...");
     const profileDoc = new Profile(portfolioData);
     await profileDoc.save();
     console.log("Profile data saved successfully in MongoDB Atlas database!");
-    
+
     console.log("Seeding Process Completed Successfully.");
     process.exit(0);
   } catch (err) {
