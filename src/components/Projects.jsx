@@ -61,21 +61,21 @@ export default function Projects({ projectsData }) {
     "feedback-system": {
       num: "03",
       subtitle: "Structured Evaluation Hub",
-      image: "/workspace.png",
+      image: "/feedback_dashboard.png",
       mission: "To automate and secure institutional student course reviews with guaranteed privacy models, input anti-collision, and real-time evaluation charts.",
       challenge: "Course evaluation sheets often suffer from biased submissions, manual counting delays, and poor privacy. Academic admins lacked direct access to clear course performance charts or automated report files.",
       solution: "We engineered a clean input verification flow that locks student anonymity while preventing duplicate logs. The system feeds into beautiful performance charts built using canvas tools, generating instant average reports and sorting evaluations efficiently.",
-      visuals: ["/workspace.png", "/clubverse.png", "/resumecraft.png"],
+      visuals: ["/feedback_dashboard.png", "/clubverse.png", "/resumecraft.png"],
       nextId: "health-assistant"
     },
     "health-assistant": {
       num: "04",
       subtitle: "AI Symptom Conversationalist",
-      image: "/workspace.png",
+      image: "/health_chatbot.png",
       mission: "To bridge patient symptom clarity by delivering pre-screened advice via an active conversational agent with safety prompt guard layers.",
       challenge: "Healthcare searches are often confusing, resulting in alarmist self-diagnoses. Visitors need a safe, conversational terminal to cast symptoms and receive reliable, verified guidance without complex jargon.",
       solution: "We deployed an intelligent query handler paired with pre-configured health data schemas. The system parses symptom phrases and triggers logical medical advice flows. Message streams are kept fluid with custom spring coordinates and typing animations.",
-      visuals: ["/workspace.png", "/resumecraft.png", "/clubverse.png"],
+      visuals: ["/health_chatbot.png", "/resumecraft.png", "/clubverse.png"],
       nextId: "clubverse"
     }
   };
@@ -213,7 +213,7 @@ export default function Projects({ projectsData }) {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover filter grayscale contrast-125 brightness-[0.8] transition-transform duration-1000 group-hover:scale-[1.02]"
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
                     <span className="font-mono text-xs tracking-widest text-[#85b5ff] uppercase bg-zinc-950/80 border border-[#85b5ff]/20 rounded-md px-4 py-2.5 flex items-center gap-2">
@@ -417,7 +417,7 @@ export default function Projects({ projectsData }) {
                         <img
                           src={vis}
                           alt={`${selectedProject.title} Page UI Screenshot ${idx + 1}`}
-                          className="w-full h-full object-cover filter grayscale contrast-[1.1] transition-transform duration-700 group-hover/visual:scale-102 group-hover/visual:filter-none"
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover/visual:scale-102"
                         />
                         <div className="absolute bottom-3 left-3 bg-black/60 border border-white/5 backdrop-blur-md px-2 py-0.5 rounded text-[8px] font-mono tracking-widest text-zinc-400 group-hover/visual:text-[#85b5ff] transition-all">
                           {idx === 0 ? "PRIMARY WORKSPACE" : idx === 1 ? "ANALYTICS SYSTEM" : "MANAGEMENT INTERFACE"}

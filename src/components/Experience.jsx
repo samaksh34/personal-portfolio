@@ -143,7 +143,7 @@ export default function Experience({ experienceData, personalInfo }) {
                 <img
                   src="/avatar.png"
                   alt={`${personalInfo?.name || "Samaksh Saxena"} Developer Profile`}
-                  className="w-full h-full object-cover filter grayscale contrast-[1.1] brightness-[0.85] transition-all duration-700 group-hover:scale-102 group-hover:filter-none"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-102"
                 />
                 
                 {/* Micro Status Badge */}

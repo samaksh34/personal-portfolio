@@ -156,7 +156,7 @@ export default function Hero({ personalInfo }) {
         className="w-full max-w-6xl flex flex-col items-start text-left relative z-10"
       >
         {/* Upper Hero Grid: Text & Stats on Left, Creative Avatar on Right */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center xl:items-start">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center lg:items-start">
           {/* Left Column: Text Content and Stats */}
           <div className="lg:col-span-8 flex flex-col items-start text-left w-full">
             {/* Uppercase Monospaced Small Label */}
@@ -241,7 +241,7 @@ export default function Hero({ personalInfo }) {
           </div>
 
           {/* Right Column: Creative Profile Picture */}
-          <div className="lg:col-span-4 flex justify-center lg:justify-end w-full pt-12 lg:pt-20 xl:pt-16">
+          <div className="lg:col-span-4 flex justify-center lg:justify-end w-full pt-6 lg:pt-11">
             <motion.div
               variants={itemVariants}
               className="relative group cursor-pointer"
@@ -261,7 +261,7 @@ export default function Hero({ personalInfo }) {
                 <img
                   src="/avatar.png"
                   alt={`${name || "Samaksh Saxena"} Passport Profile`}
-                  className="w-full h-full object-cover filter grayscale contrast-[1.1] brightness-[0.9] transition-all duration-700 group-hover:scale-105 group-hover:filter-none"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                 />
                 
                 {/* Sleek Overlay Gradients */}

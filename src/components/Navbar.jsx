@@ -39,7 +39,7 @@ export default function Navbar() {
           {/* Sam Brand Logo */}
           <a href="#home" className="flex items-center gap-2.5 text-white font-bold tracking-[0.2em] text-sm font-mono uppercase group">
             <Compass className="h-5 w-5 text-zinc-400 group-hover:text-[#85b5ff] transition-all duration-500 group-hover:rotate-45" />
-            <span>SAM.DEV</span>
+            <span>SAMXH.DEV</span>
           </a>
 
           {/* Centered Navigation */}
