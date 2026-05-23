@@ -29,11 +29,10 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-6 left-1/2 z-50 w-[94%] max-w-7xl -translate-x-1/2 rounded-[20px] border transition-all duration-500 ${
-          scrolled || isOpen
+        className={`fixed top-6 left-1/2 z-50 w-[95%] max-w-[1380px] -translate-x-1/2 rounded-[20px] border transition-all duration-500 ${scrolled || isOpen
             ? "border-white/10 bg-black/85 shadow-[0_20px_50px_rgba(0,0,0,0.7)] backdrop-blur-lg py-1.5"
             : "border-white/5 bg-zinc-950/45 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-md py-3"
-        }`}
+          }`}
       >
         <div className="flex items-center justify-between px-8 py-3.5 sm:px-10 transition-all duration-500">
           {/* Atelier Brand Logo */}
