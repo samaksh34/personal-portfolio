@@ -1,8 +1,11 @@
 "use client";
-import { motion } from "framer-motion";
-import { MapPin, GraduationCap, Calendar, Award, ExternalLink, Download, Compass, Code2, Star, BookOpen, Layers } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MapPin, GraduationCap, Calendar, Award, ExternalLink, Download, Compass, Code2, Star, BookOpen, Layers, ChevronDown, ChevronUp } from "lucide-react";
 
 export default function Experience({ experienceData, personalInfo }) {
+  const [expandedIndex, setExpandedIndex] = useState(null);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -78,20 +81,73 @@ export default function Experience({ experienceData, personalInfo }) {
         }
       ];
 
+function CircularProgress({ value, max = 10, size = 64, strokeWidth = 5 }) {
+  const percentage = (value / max) * 100;
+  const radius = (size - strokeWidth) / 2;
+  const strokeDasharray = 2 * Math.PI * radius;
+  const strokeDashoffset = strokeDasharray - (percentage / 100) * strokeDasharray;
+
+  return (
+    <div className="relative flex items-center justify-center shrink-0" style={{ width: size, height: size }}>
+      <svg className="w-full h-full transform -rotate-90">
+        {/* Track circle */}
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="transparent"
+          stroke="rgba(255, 255, 255, 0.03)"
+          strokeWidth={strokeWidth}
+        />
+        {/* Progress circle with premium glow */}
+        <motion.circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="transparent"
+          stroke="#85b5ff"
+          strokeWidth={strokeWidth}
+          strokeDasharray={strokeDasharray}
+          initial={{ strokeDashoffset: strokeDasharray }}
+          whileInView={{ strokeDashoffset }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          strokeLinecap="round"
+          className="filter drop-shadow-[0_0_6px_rgba(133,181,255,0.4)]"
+        />
+      </svg>
+      {/* Absolute value text */}
+      <span className="absolute font-mono text-[10px] sm:text-[11px] font-semibold text-white tracking-tighter">
+        {value}{max === 100 ? '%' : ''}
+      </span>
+    </div>
+  );
+}
+
   const educationHistory = [
     {
       degree: "B.Tech in Information Technology (AKTU)",
       institution: "ABES Engineering College, Ghaziabad",
-      period: "2023 - 2027",
-      grade: "Grade: 8.28 CGPA",
+      period: "2023 - 2027 (Currently in 3rd Year)",
+      grade: 8.28,
+      maxGrade: 10,
       description: "Pursuing my B.Tech in Information Technology at ABES Engineering College, Ghaziabad.",
-      logo: "/abes.png"
+      logo: "/abes.png",
+      semesters: [
+        { name: "1st Semester", gpa: "8.68", type: "SGPA" },
+        { name: "2nd Semester", gpa: "8.45", type: "SGPA" },
+        { name: "3rd Semester", gpa: "8.16", type: "SGPA" },
+        { name: "4th Semester", gpa: "8.30", type: "SGPA" },
+        { name: "5th Semester", gpa: "7.83", type: "SGPA" },
+        { name: "Overall Average", gpa: "8.28", type: "CGPA" }
+      ]
     },
     {
       degree: "Class 12th (CBSE)",
       institution: "Dayawati Modi Academy, Modipur Rampur",
       period: "2023",
-      grade: "Grade: 84.8%",
+      grade: 84.8,
+      maxGrade: 100,
       description: "Completed my Class XII from Dayawati Modi Academy under the CBSE board.",
       logo: "/cbse.png"
     },
@@ -99,7 +155,8 @@ export default function Experience({ experienceData, personalInfo }) {
       degree: "Class 10th (CBSE)",
       institution: "Dayawati Modi Academy, Modipur Rampur",
       period: "2021",
-      grade: "Grade: 94.6%",
+      grade: 94.6,
+      maxGrade: 100,
       description: "Completed my Class X from Dayawati Modi Academy under the CBSE board.",
       logo: "/cbse.png"
     }
@@ -350,40 +407,76 @@ export default function Experience({ experienceData, personalInfo }) {
                       <div className="absolute -inset-10 bg-gradient-to-tr from-[#85b5ff]/5 to-transparent rounded-[3rem] blur-2xl opacity-40 group-hover:opacity-85 transition-opacity duration-700 pointer-events-none" />
  
                       {/* Card Content Header */}
-                      <div className="flex items-start gap-4 mb-5 relative z-10">
-                        {/* Dynamic Card Header Logo */}
-                        <div className="h-14 w-14 rounded-2xl bg-zinc-900/80 flex items-center justify-center shrink-0 border border-white/5 shadow-inner overflow-hidden transition-all duration-500 group-hover:border-[#85b5ff]/30">
-                          <img
-                            src={item.logo}
-                            alt=""
-                            className="h-9 w-9 object-contain filter brightness-110 contrast-105"
-                          />
+                      <div className="flex items-start justify-between gap-4 mb-5 relative z-10">
+                        <div className="flex items-start gap-4">
+                          {/* Dynamic Card Header Logo */}
+                          <div className="h-14 w-14 rounded-2xl bg-zinc-900/80 flex items-center justify-center shrink-0 border border-white/5 shadow-inner overflow-hidden transition-all duration-500 group-hover:border-[#85b5ff]/30">
+                            <img
+                              src={item.logo}
+                              alt=""
+                              className="h-9 w-9 object-contain filter brightness-110 contrast-105"
+                            />
+                          </div>
+                          <div>
+                            <h3 className="font-serif text-lg sm:text-xl text-white font-medium group-hover:text-[#85b5ff] transition-colors duration-300">
+                              {item.degree}
+                            </h3>
+                            <span className="font-mono text-[9px] tracking-widest text-zinc-400 uppercase mt-1.5 block font-semibold">
+                              {item.institution}
+                            </span>
+                            <span className="font-mono text-[9px] text-[#85b5ff] uppercase tracking-wider block mt-1">
+                              📅 {item.period}
+                            </span>
+                          </div>
                         </div>
-                        <div>
-                          <h3 className="font-serif text-xl sm:text-2xl text-white font-medium group-hover:text-[#85b5ff] transition-colors duration-300">
-                            {item.degree}
-                          </h3>
-                          <span className="font-mono text-[9px] tracking-widest text-[#85b5ff] uppercase mt-1.5 block font-semibold">
-                            {item.institution}
-                          </span>
-                        </div>
+
+                        {/* Circular Progress Component */}
+                        <CircularProgress value={item.grade} max={item.maxGrade} />
                       </div>
  
-                      {/* Card Body Metrics & Details */}
+                      {/* Card Body Description */}
                       <div className="space-y-4 font-light relative z-10">
-                        <div className="flex flex-wrap gap-2 text-xs font-mono">
-                          <span className="bg-zinc-900/60 px-3 py-1 rounded-md border border-zinc-850 text-zinc-400 font-medium">
-                            📅 {item.period}
-                          </span>
-                          <span className="bg-[#85b5ff]/5 text-[#85b5ff] border border-[#85b5ff]/15 px-3 py-1 rounded-md font-semibold tracking-wide uppercase">
-                            🏆 {item.grade}
-                          </span>
-                        </div>
-                        
                         <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-light">
                           {item.description}
                         </p>
                       </div>
+
+                      {/* Collapsible Details Trigger */}
+                      {item.semesters && (
+                        <div className="relative z-10 mt-6 pt-4 border-t border-zinc-900/60">
+                          <button
+                            onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
+                            className="flex items-center gap-2 font-mono text-[9px] tracking-widest text-[#85b5ff] hover:text-white uppercase transition-colors cursor-pointer"
+                          >
+                            <span>{expandedIndex === index ? "Hide Details" : "View Details"}</span>
+                            <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${expandedIndex === index ? 'rotate-180' : ''}`} />
+                          </button>
+
+                          {/* Animated Collapsible List */}
+                          <AnimatePresence initial={false}>
+                            {expandedIndex === index && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                                className="overflow-hidden"
+                              >
+                                <ul className="mt-4 space-y-2.5 pl-2 font-mono text-xs text-zinc-400">
+                                  {item.semesters.map((sem, sIdx) => (
+                                    <li key={sIdx} className="flex items-center gap-2">
+                                      <span className="h-1.5 w-1.5 rounded-full bg-[#85b5ff]" />
+                                      <span>
+                                        {sem.name} — <strong className="text-white">{sem.gpa}</strong> {sem.type}
+                                      </span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      )}
  
                     </div>
                   </motion.div>

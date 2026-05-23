@@ -5,6 +5,7 @@ import Spotlight from "@/components/Spotlight";
 import NoiseOverlay from "@/components/NoiseOverlay";
 import Navbar from "@/components/Navbar";
 import ResumeModal from "@/components/ResumeModal";
+import BackgroundAnimation from "@/components/BackgroundAnimation";
 
 // modern sans heading font
 const outfit = Outfit({
@@ -238,6 +239,7 @@ export default function RootLayout({ children }) {
       <body className="bg-obsidian text-silver font-sans selection:bg-neon-indigo/25 antialiased min-h-screen">
         <SmoothScroll>
           <NoiseOverlay />
+          <BackgroundAnimation />
           <Spotlight />
           <Navbar />
           <ResumeModal />
