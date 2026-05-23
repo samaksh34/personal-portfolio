@@ -35,10 +35,11 @@ export default function Navbar() {
           }`}
       >
         <div className="flex items-center justify-between px-8 py-3.5 sm:px-10 transition-all duration-500">
-          {/* Atelier Brand Logo */}
+
+          {/* Sam Brand Logo */}
           <a href="#home" className="flex items-center gap-2.5 text-white font-bold tracking-[0.2em] text-sm font-mono uppercase group">
             <Compass className="h-5 w-5 text-zinc-400 group-hover:text-[#85b5ff] transition-all duration-500 group-hover:rotate-45" />
-            <span>ATELIER.DEV</span>
+            <span>SAM.DEV</span>
           </a>
 
           {/* Centered Navigation */}
