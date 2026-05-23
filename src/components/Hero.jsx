@@ -162,7 +162,7 @@ export default function Hero({ personalInfo }) {
             {/* Uppercase Monospaced Small Label */}
             <motion.div variants={itemVariants} className="flex items-center gap-2 mb-6">
               <span className="font-mono text-[10px] tracking-[0.25em] text-[#85b5ff] uppercase">
-                👋 HELLO, I'M
+                👋 HELLO, I&apos;M
               </span>
               <span className="h-[1px] w-8 bg-[#85b5ff]/30"></span>
             </motion.div>
@@ -179,7 +179,7 @@ export default function Hero({ personalInfo }) {
             {/* Narrative Description with Role */}
             <motion.div variants={itemVariants} className="mt-8 space-y-4 max-w-2xl">
               <h3 className="font-mono text-xs sm:text-sm tracking-widest uppercase text-zinc-300">
-                I'm a <span className="text-[#85b5ff] font-semibold">{title || "Full-Stack Developer"}</span>
+                I&apos;m a <span className="text-[#85b5ff] font-semibold">{title || "Full-Stack Developer"}</span>
               </h3>
               <p className="text-zinc-400 text-sm sm:text-base md:text-lg font-light leading-relaxed">
                 {tagline || "I build responsive, user-focused web applications with clean UI and modern animations — blending design and functionality for seamless user experiences."}

@@ -373,7 +373,7 @@ export default function Projects({ projectsData }) {
                   <div className="absolute -inset-10 bg-gradient-to-r from-[#85b5ff]/5 to-transparent rounded-[2rem] blur-2xl opacity-40 group-hover:opacity-80 transition-opacity duration-700 pointer-events-none" />
                   <span className="font-mono text-[9px] tracking-[0.25em] text-[#85b5ff] uppercase block mb-2 relative z-10">THE MISSION</span>
                   <p className="text-zinc-300 text-xs sm:text-sm font-light leading-relaxed italic relative z-10">
-                    "{selectedProject.mission}"
+                    &quot;{selectedProject.mission}&quot;
                   </p>
                 </div>
 

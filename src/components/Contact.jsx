@@ -123,7 +123,7 @@ export default function Contact({ contactInfo, recruiterLine }) {
           variants={itemVariants}
           className="font-serif text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.08] text-white font-medium max-w-3xl"
         >
-          Let's construct <br />
+          Let&apos;s construct <br />
           something <span className="font-serif italic font-light text-[#85b5ff]">extraordinary</span><span className="text-[#85b5ff]">.</span>
         </motion.h2>
 
@@ -255,7 +255,7 @@ export default function Contact({ contactInfo, recruiterLine }) {
                         type="text"
                         id="name"
                         name="name"
-                        placeholder="e.g. Ayan Pandey"
+                        placeholder="e.g. John Doe"
                         value={formData.name}
                         onChange={handleInputChange}
                         disabled={status === "loading"}
