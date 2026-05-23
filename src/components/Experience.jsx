@@ -254,7 +254,9 @@ export default function Experience({ experienceData, personalInfo }) {
               </a>
 
               <a
-                href="#contact"
+                href="/resume.pdf"
+                target="_blank"
+                download="Samaksh_Saxena_Resume.pdf"
                 className="group flex h-11 items-center justify-center gap-2 rounded-lg border border-zinc-800 bg-zinc-950/40 px-6 text-xs font-mono tracking-widest font-semibold uppercase text-zinc-300 transition-all hover:border-zinc-700 hover:text-white hover:bg-zinc-900/30"
               >
                 <Download className="h-4 w-4" />

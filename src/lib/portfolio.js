@@ -17,7 +17,7 @@ export async function getPortfolioData() {
     console.warn("No profile document found in MongoDB. Using static local fallback.");
     return fallbackData;
   } catch (error) {
-    console.error("Database connection failure in getPortfolioData. Gracefully using local static fallback:", error.message);
+    console.warn("Database connection failure in getPortfolioData. Gracefully using local static fallback:", error.message);
     return fallbackData;
   }
 }

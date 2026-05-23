@@ -67,7 +67,9 @@ export default function Navbar() {
           {/* Right Action: Pastel Blue Resume Pill */}
           <div className="flex items-center gap-4">
             <a
-              href="#contact"
+              href="/resume.pdf"
+              target="_blank"
+              download="Samaksh_Saxena_Resume.pdf"
               className="hidden sm:inline-flex h-11 items-center justify-center rounded-xl bg-[#85b5ff] px-6 text-xs font-mono tracking-widest font-bold uppercase text-black transition-all hover:scale-[1.02] active:scale-[0.98] hover:bg-[#a1c6ff] shadow-lg shadow-[#85b5ff]/10"
             >
               Resume
@@ -112,7 +114,9 @@ export default function Navbar() {
                 </motion.a>
               ))}
               <a
-                href="#contact"
+                href="/resume.pdf"
+                target="_blank"
+                download="Samaksh_Saxena_Resume.pdf"
                 onClick={() => setIsOpen(false)}
                 className="flex w-full items-center justify-center rounded-xl bg-[#85b5ff] py-4 mt-3 text-xs tracking-wider uppercase font-semibold text-black transition-all hover:bg-[#a1c6ff]"
               >

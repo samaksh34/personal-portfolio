@@ -46,8 +46,8 @@ const portfolioData = {
     recruiterLine: "Full-stack developer focused on building scalable web applications, dashboard systems, and user-focused digital experiences with modern engineering practices.",
     contact: {
       email: "samakshsaxena03@gmail.com",
-      github: "https://github.com/Samaksh34",
-      linkedin: "https://linkedin.com/in/samaksh-saxena"
+      github: "https://github.com/samaksh34",
+      linkedin: "https://www.linkedin.com/in/samaksh-saxena-152843305/"
     }
   },
   services: [
@@ -143,8 +143,8 @@ const portfolioData = {
         dashboards: "3 Dedicated Portals"
       },
       links: {
-        github: "#",
-        live: "#"
+        github: "https://github.com/samaksh34/clubverse",
+        live: "https://clubverse-7jyv.vercel.app/"
       }
     },
     {
@@ -170,8 +170,8 @@ const portfolioData = {
         templates: "ATS-Friendly Templates"
       },
       links: {
-        github: "#",
-        live: "#"
+        github: "https://github.com/samaksh34/RESUME-BUILDER",
+        live: "https://resume-builder-eight-ochre.vercel.app/"
       }
     },
     {
