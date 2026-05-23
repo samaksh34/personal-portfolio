@@ -24,6 +24,18 @@ function GithubIcon({ className }) {
 export default function Projects({ projectsData }) {
   const [selectedProject, setSelectedProject] = useState(null);
 
+  // Lock background scroll when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedProject]);
+
   // Preserve initial projects list and enhance each with Atelier-level content
   const projects = [
     {
@@ -248,6 +260,7 @@ export default function Projects({ projectsData }) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              data-lenis-prevent
               className="relative z-10 w-full max-w-4xl max-h-[85vh] bg-[#070708]/95 border border-zinc-900 rounded-[28px] p-6 sm:p-10 md:p-12 overflow-y-auto shadow-[0_24px_80px_rgba(0,0,0,0.85)] backdrop-blur-xl scrollbar-thin"
             >
               {/* Modal Body Scroll Area */}
