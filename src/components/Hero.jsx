@@ -172,17 +172,17 @@ export default function Hero({ personalInfo }) {
               variants={itemVariants}
               className="font-serif text-5xl sm:text-7xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.05] text-white font-semibold max-w-4xl animate-fade-in"
             >
-              Nitin<br />
-              Chugh<span className="text-[#85b5ff]">.</span>
+              {name ? name.split(" ")[0] : "Samaksh"}<br />
+              {name ? name.split(" ").slice(1).join(" ") : "Saxena"}<span className="text-[#85b5ff]">.</span>
             </motion.h1>
 
             {/* Narrative Description with Role */}
             <motion.div variants={itemVariants} className="mt-8 space-y-4 max-w-2xl">
               <h3 className="font-mono text-xs sm:text-sm tracking-widest uppercase text-zinc-300">
-                I'm a <span className="text-[#85b5ff] font-semibold">Full-Stack Developer</span>
+                I'm a <span className="text-[#85b5ff] font-semibold">{title || "Full-Stack Developer"}</span>
               </h3>
               <p className="text-zinc-400 text-sm sm:text-base md:text-lg font-light leading-relaxed">
-                I build <span className="text-white font-medium">responsive, user-focused web applications</span> with clean UI and modern animations — blending design and functionality for seamless user experiences.
+                {tagline || "I build responsive, user-focused web applications with clean UI and modern animations — blending design and functionality for seamless user experiences."}
               </p>
             </motion.div>
 
@@ -260,7 +260,7 @@ export default function Hero({ personalInfo }) {
                 {/* Image container inside the asymmetric frame */}
                 <img
                   src="/avatar.png"
-                  alt="Nitin Chugh Passport Profile"
+                  alt={`${name || "Samaksh Saxena"} Passport Profile`}
                   className="w-full h-full object-cover filter grayscale contrast-[1.1] brightness-[0.9] transition-all duration-700 group-hover:scale-105 group-hover:filter-none"
                 />
                 
@@ -274,7 +274,7 @@ export default function Hero({ personalInfo }) {
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     AVAILABLE FOR HIRE
                   </span>
-                  <span>v2.0 // NITIN</span>
+                  <span>v2.0 // {name ? name.split(" ")[0].toUpperCase() : "SAMAKSH"}</span>
                 </div>
               </div>
 

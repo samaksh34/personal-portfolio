@@ -36,97 +36,142 @@ export default function Projects({ projectsData }) {
     };
   }, [selectedProject]);
 
-  // Preserve initial projects list and enhance each with Atelier-level content
-  const projects = [
-    {
-      id: "clubverse",
+  // Dynamic project layout configuration mapping database IDs to high-end mockups and text details
+  const projectConfigs = {
+    "clubverse": {
       num: "01",
-      title: "ClubVerse",
       subtitle: "Social Campus Infrastructure",
-      description: "A decentralized ecosystem for digital student communities and community governance. Built with a focus on role-based portal security and fluid interaction design.",
-      longDescription: "ClubVerse is a scalable full-stack web ecosystem built to centralize student communities, club operations, and event workflows. The architecture hosts three distinct entry points: a student hub, a club administrator panel, and a campus super-admin controller. It features granular Role-Based Access Control (RBAC), multi-role dashboards, real-time event updates, and robust relational mapping systems.",
       image: "/clubverse.png",
-      tags: ["NEXT.JS", "TYPESCRIPT", "TAILWIND CSS", "SUPABASE", "POSTGRESQL", "DRIZZLE ORM"],
-      links: { github: "https://github.com/samaksh34", live: "https://github.com/samaksh34" },
       mission: "To centralize fragmented student community coordinator operations, role-based permission hierarchies, and event registries inside a single type-safe, high-speed campus dashboard ecosystem.",
       challenge: "Campus organizations often struggle with fragmented communications, manual registration forms, and opaque approvals. Event coordinators lacked a central portal, and student users suffered from excessive app fatigue trying to keep up with schedules.",
       solution: "ClubVerse solves this by designing a high-performance relational database with granular role systems. We established automated registration records, custom approvals, and instant status synchronizations. Dashboard screens leverage modular layouts that update dynamically without expensive page reloads.",
-      kpis: [
-        { label: "UPTIME ACCURACY", value: "99.9%" },
-        { label: "SYNC LATENCY", value: "15ms" },
-        { label: "ACTIVE NODES", value: "1.2k+" },
-        { label: "ENCRYPTION KEY", value: "256bit" }
-      ],
       visuals: ["/clubverse.png", "/workspace.png", "/resumecraft.png"],
       nextId: "resumecraft"
     },
-    {
-      id: "resumecraft",
+    "resumecraft": {
       num: "02",
-      title: "ResumeCraft",
       subtitle: "AI Editorial Builder",
-      description: "An AI-powered editorial tool for developers to curate their professional identity. Features a custom markdown engine and real-time print-ready previews.",
-      longDescription: "ResumeCraft is an automated resume generation platform focused on producing clean, machine-readable, and highly professional resumes. It provides customizable ATS-compliant styling grids, custom formatting toggles, secure user authentication systems, and a high-fidelity PDF export compiler that converts structured form state into instant downloads.",
       image: "/resumecraft.png",
-      tags: ["REACT.JS", "NODE.JS", "EXPRESS.JS", "MONGODB", "TAILWIND CSS", "JWT AUTH"],
-      links: { github: "https://github.com/samaksh34", live: "https://github.com/samaksh34" },
       mission: "To deliver a complete ATS-friendly print curriculum editor featuring modular drag-reordering, PDF output security, and instant custom downloads for global developers.",
       challenge: "Most developer resumes suffer from poor parser formatting, unaligned sections, or heavy files that fail ATS benchmarks. Existing builders lock standard styling behind subscriptions or export low-quality layouts.",
       solution: "ResumeCraft implements a dynamic form state validator mapped directly to an ATS-optimized CSS printing grid. We developed a secure JWT authorization structure, dashboard catalog saving, and a local server-side PDF render workflow to ensure complete visual fidelity on all desktop machines.",
-      kpis: [
-        { label: "ATS RATING SCORE", value: "100%" },
-        { label: "PDF BUILD TIME", value: "1.8s" },
-        { label: "COMPILER WEIGHT", value: "Light" },
-        { label: "EXPORT STABILITY", value: "99.8%" }
-      ],
       visuals: ["/resumecraft.png", "/workspace.png", "/clubverse.png"],
-      nextId: "feedbacksystem"
+      nextId: "feedback-system"
     },
-    {
-      id: "feedbacksystem",
+    "feedback-system": {
       num: "03",
-      title: "FeedbackSystem",
       subtitle: "Structured Evaluation Hub",
-      description: "A web-based evaluation platform enabling structured faculty feedback collection, analytics visualization, and report generation workflows.",
-      longDescription: "Built a secure feedback management platform allowing student panels to cast structured evaluations for faculty courses. We focused on completely bulletproof data anonymity, instant course analytics dashboards, automated verification checks, and institutional report generation summaries.",
       image: "/workspace.png",
-      tags: ["HTML", "CSS", "JAVASCRIPT", "ANALYTICS", "CHART.JS", "REST API"],
-      links: { github: "https://github.com/samaksh34", live: "https://github.com/samaksh34" },
       mission: "To automate and secure institutional student course reviews with guaranteed privacy models, input anti-collision, and real-time evaluation charts.",
       challenge: "Course evaluation sheets often suffer from biased submissions, manual counting delays, and poor privacy. Academic admins lacked direct access to clear course performance charts or automated report files.",
       solution: "We engineered a clean input verification flow that locks student anonymity while preventing duplicate logs. The system feeds into beautiful performance charts built using canvas tools, generating instant average reports and sorting evaluations efficiently.",
-      kpis: [
-        { label: "DATA ANONYMITY", value: "100%" },
-        { label: "REPORT SPEED", value: "50ms" },
-        { label: "REVIEWS PROCESSED", value: "3k+" },
-        { label: "DEVICES READY", value: "Mobile" }
-      ],
       visuals: ["/workspace.png", "/clubverse.png", "/resumecraft.png"],
-      nextId: "healthchatbot"
+      nextId: "health-assistant"
     },
-    {
-      id: "healthchatbot",
+    "health-assistant": {
       num: "04",
-      title: "Health Assistant",
       subtitle: "AI Symptom Conversationalist",
-      description: "An AI-powered healthcare assistant chatbot designed to provide intelligent symptom-based responses and real-time user interaction workflows.",
-      longDescription: "Collaboratively designed a secure healthcare conversational agent leveraging structured AI models to assist visitors with symptom-based guidance. Implemented clean chat messaging arrays, low-latency prompt queries, robust prompt guards, and responsive mobile interfaces.",
       image: "/workspace.png",
-      tags: ["JAVASCRIPT", "NLP CONCEPTS", "AI RESPONSES", "CHAT ENGINE", "NODE.JS"],
-      links: { github: "https://github.com/samaksh34", live: "https://github.com/samaksh34" },
       mission: "To bridge patient symptom clarity by delivering pre-screened advice via an active conversational agent with safety prompt guard layers.",
       challenge: "Healthcare searches are often confusing, resulting in alarmist self-diagnoses. Visitors need a safe, conversational terminal to cast symptoms and receive reliable, verified guidance without complex jargon.",
       solution: "We deployed an intelligent query handler paired with pre-configured health data schemas. The system parses symptom phrases and triggers logical medical advice flows. Message streams are kept fluid with custom spring coordinates and typing animations.",
-      kpis: [
-        { label: "MODEL ACCURACY", value: "98.2%" },
-        { label: "INFERENCE DELAY", value: "120ms" },
-        { label: "CHATS SECURED", value: "SSL" },
-        { label: "ENGINE COMPILER", value: "LLM" }
-      ],
       visuals: ["/workspace.png", "/resumecraft.png", "/clubverse.png"],
       nextId: "clubverse"
     }
+  };
+
+  // Build the projects list by combining database projectsData with the config mapping
+  const sourceProjects = projectsData && projectsData.length > 0 ? projectsData : [
+    {
+      id: "clubverse",
+      title: "ClubVerse",
+      description: "A scalable club and event management ecosystem with role-based dashboards, authentication systems, and workflow automation.",
+      longDescription: "ClubVerse is a production-focused full-stack platform designed to simplify club and event management for colleges.",
+      tags: ["Next.js", "React.js", "Tailwind CSS", "Supabase", "Drizzle ORM", "PostgreSQL", "RBAC", "JWT"],
+      stats: {
+        architecture: "Multi-Portal RBAC",
+        backend: "Supabase + PostgreSQL",
+        auth: "Secure Authentication",
+        dashboards: "3 Dedicated Portals"
+      },
+      links: { github: "#", live: "#" }
+    },
+    {
+      id: "resumecraft",
+      title: "ResumeCraft",
+      description: "ATS-focused resume builder platform with authentication, real-time customization, and PDF export workflows.",
+      longDescription: "ResumeCraft is a full-stack resume generation platform designed to help users create ATS-friendly professional resumes.",
+      tags: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "PDF Export"],
+      stats: {
+        auth: "JWT Authentication",
+        export: "PDF Resume Export",
+        ui: "Live Preview System",
+        templates: "ATS-Friendly Templates"
+      },
+      links: { github: "#", live: "#" }
+    },
+    {
+      id: "feedback-system",
+      title: "Faculty Feedback Automation",
+      description: "Web-based evaluation and analytics system for structured faculty feedback management.",
+      longDescription: "A structured feedback automation platform enabling students to submit faculty evaluations.",
+      tags: ["HTML", "CSS", "JavaScript", "Dashboard", "Analytics"],
+      stats: {
+        analytics: "Faculty Reports",
+        forms: "Dynamic Validation",
+        workflow: "Automated Submission",
+        dashboards: "Performance Insights"
+      },
+      links: { github: "#", live: "#" }
+    },
+    {
+      id: "health-assistant",
+      title: "AI Health Assistant Chatbot",
+      description: "AI-powered healthcare chatbot with NLP-based query handling and intelligent response workflows.",
+      longDescription: "An AI-integrated healthcare assistant chatbot capable of handling symptom-based conversations.",
+      tags: ["AI", "NLP", "Chatbot", "Node.js", "Healthcare"],
+      stats: {
+        ai: "NLP-Based Responses",
+        workflow: "Symptom Handling",
+        interface: "Interactive Chat UI",
+        backend: "Response Pipelines"
+      },
+      links: { github: "#", live: "#" }
+    }
   ];
+
+  const projects = sourceProjects.map((p) => {
+    // Normalise ID matches (e.g. feedbacksystem -> feedback-system)
+    const normalizedId = p.id === "feedbacksystem" ? "feedback-system" : 
+                         p.id === "healthchatbot" ? "health-assistant" : p.id;
+    const config = projectConfigs[normalizedId] || {
+      num: "05",
+      subtitle: "Development System",
+      image: "/workspace.png",
+      mission: "To deliver modern software applications with clean engineering practices.",
+      challenge: "Building secure, accessible interfaces under production milestones.",
+      solution: "Developed dynamic state-driven React components integrated with custom database tables.",
+      visuals: ["/workspace.png"],
+      nextId: "clubverse"
+    };
+
+    // Dynamically convert MongoDB stats map/object to case study KPIs list
+    const kpis = p.stats
+      ? Object.entries(p.stats instanceof Map ? Object.fromEntries(p.stats) : p.stats).map(([key, val]) => ({
+          label: key.replace(/([A-Z])/g, ' $1').toUpperCase(),
+          value: val
+        }))
+      : [
+          { label: "STATUS", value: "Ready" }
+        ];
+
+    return {
+      ...p,
+      ...config,
+      kpis,
+      tags: p.tags.map(t => t.toUpperCase()) // visual design uses uppercase tags
+    };
+  });
 
   // Helper to switch projects smoothly inside the modal
   const handleTransitionToProject = (id) => {

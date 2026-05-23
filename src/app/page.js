@@ -18,7 +18,7 @@ export default async function Home() {
       {/* Sections scroll flow */}
       <div className="relative z-10 w-full flex flex-col">
         <Hero personalInfo={data.personalInfo} />
-        <Experience experienceData={data.experience} />
+        <Experience experienceData={data.experience} personalInfo={data.personalInfo} />
         <Services servicesData={data.services} />
         <Projects projectsData={data.projects} />
         <TechStack categoriesData={data.techStack} />

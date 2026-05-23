@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { MapPin, GraduationCap, Calendar, Award, ExternalLink, Download, Compass, Code2, Star, BookOpen, Layers } from "lucide-react";
 
-export default function Experience({ experienceData }) {
+export default function Experience({ experienceData, personalInfo }) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -26,36 +26,38 @@ export default function Experience({ experienceData }) {
     },
   };
 
-  const timelineItems = [
-    {
-      year: "2023",
-      title: "Started B.Tech - ABES EC",
-      description: "Joined IT at ABES Engineering College, Ghaziabad."
-    },
-    {
-      year: "2024",
-      title: "Built First Full-Stack App",
-      description: "Launched UrbanCartX — MERN e-commerce with AI recommendations."
-    },
-    {
-      year: "2025",
-      title: "Hackathon Finalist",
-      description: "Top finalist at national-level hackathon building EasyGov."
-    },
-    {
-      year: "2025",
-      title: "nCoder — AI Browser IDE",
-      description: "Built a browser-based IDE using WebContainers + Ollama + Next.js 15."
-    }
-  ];
+  // Dynamically build timeline items from MongoDB experienceData
+  const timelineItems = experienceData && experienceData.length > 0
+    ? experienceData.map((item) => ({
+        year: item.period.split("—")[0].trim().slice(0, 4),
+        title: item.role,
+        description: `${item.company} — ${item.highlights[0] || ""}`
+      }))
+    : [
+        {
+          year: "2023",
+          title: "Started B.Tech - ABES EC",
+          description: "Joined IT at ABES Engineering College, Ghaziabad."
+        },
+        {
+          year: "2024",
+          title: "SIH Participant",
+          description: "Collaborated on problem-solving workflows for national milestones."
+        },
+        {
+          year: "2024",
+          title: "Community Coordinator",
+          description: "Coordinated logistics and team schedules for key college events."
+        }
+      ];
 
   const educationHistory = [
     {
-      degree: "B.Tech",
-      institution: "ABES Engineering College",
-      period: "2023-2027",
-      grade: "Grade: 7.51 CGPA (current)",
-      description: "I am currently in 6th Semester",
+      degree: "B.Tech in Information Technology (AKTU)",
+      institution: "ABES Engineering College, Ghaziabad",
+      period: "2023 - 2027",
+      grade: "Grade: 8.28 CGPA",
+      description: "Pursuing my B.Tech in Information Technology at ABES Engineering College, Ghaziabad.",
       logo: (
         <svg className="h-7 w-7 text-amber-500 filter drop-shadow-[0_0_8px_rgba(245,158,11,0.3)]" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
@@ -63,11 +65,11 @@ export default function Experience({ experienceData }) {
       )
     },
     {
-      degree: "XII (CBSE)- PCM",
-      institution: "DDPS School",
+      degree: "Class 12th (CBSE)",
+      institution: "Dayawati Modi Academy, Modipur Rampur",
       period: "2023",
-      grade: "Grade: 75%",
-      description: "I completed my XII from DDPS School from CBSE board.",
+      grade: "Grade: 84.8%",
+      description: "Completed my Class XII from Dayawati Modi Academy under the CBSE board.",
       logo: (
         <svg className="h-7 w-7 text-emerald-500 filter drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
@@ -76,11 +78,11 @@ export default function Experience({ experienceData }) {
       )
     },
     {
-      degree: "X (CBSE)",
-      institution: "Tender Hearts School",
+      degree: "Class 10th (CBSE)",
+      institution: "Dayawati Modi Academy, Modipur Rampur",
       period: "2021",
-      grade: "Grade: 91%",
-      description: "I completed my X class from Tender Hearts School from CBSE board.",
+      grade: "Grade: 94.6%",
+      description: "Completed my Class X from Dayawati Modi Academy under the CBSE board.",
       logo: (
         <svg className="h-7 w-7 text-[#85b5ff] filter drop-shadow-[0_0_8px_rgba(133,181,255,0.3)]" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -126,7 +128,7 @@ export default function Experience({ experienceData }) {
               <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-zinc-900 border border-white/5 mb-6">
                 <img
                   src="/avatar.png"
-                  alt="Nitin Chugh Developer Profile"
+                  alt={`${personalInfo?.name || "Samaksh Saxena"} Developer Profile`}
                   className="w-full h-full object-cover filter grayscale contrast-[1.1] brightness-[0.85] transition-all duration-700 group-hover:scale-102 group-hover:filter-none"
                 />
                 
@@ -142,7 +144,7 @@ export default function Experience({ experienceData }) {
               {/* Identity & Location Rows */}
               <div className="space-y-4">
                 <div>
-                  <h3 className="font-serif text-2xl text-white font-semibold">Nitin Chugh</h3>
+                  <h3 className="font-serif text-2xl text-white font-semibold">{personalInfo?.name || "Samaksh Saxena"}</h3>
                   <span className="font-mono text-[10px] tracking-widest text-zinc-500 uppercase mt-0.5 block">
                     Full-Stack Developer
                   </span>
@@ -182,12 +184,9 @@ export default function Experience({ experienceData }) {
           <motion.div variants={itemVariants} className="lg:col-span-8 flex flex-col gap-8 w-full">
             
             {/* Narrative Blocks */}
-            <div className="space-y-4 text-zinc-400 font-light text-sm sm:text-base leading-relaxed">
+            <div className="space-y-4 text-zinc-400 font-light text-sm sm:text-base leading-relaxed whitespace-pre-line">
               <p>
-                Hi — I'm <strong className="text-white font-semibold">Nitin Chugh</strong>, a curious and design-minded web developer. I build accessible, responsive applications that marry meaningful interactions with robust engineering. Currently pursuing <strong className="text-[#85b5ff] font-medium">B.Tech in IT at ABES Engineering College</strong>.
-              </p>
-              <p className="text-zinc-500 text-xs sm:text-sm">
-                My toolkit: modern React patterns, Tailwind CSS, Framer Motion, and backend fundamentals. I focus on performance, accessibility, and maintainable code.
+                {personalInfo?.aboutLong || "Hi — I'm Samaksh Saxena, a curious and design-minded web developer..."}
               </p>
             </div>
 
