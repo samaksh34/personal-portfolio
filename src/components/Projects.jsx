@@ -36,6 +36,7 @@ export default function Projects({ projectsData }) {
       image: "/clubverse.png",
       tags: ["NEXT.JS", "TYPESCRIPT", "TAILWIND CSS", "SUPABASE", "POSTGRESQL", "DRIZZLE ORM"],
       links: { github: "https://github.com/samaksh34", live: "https://github.com/samaksh34" },
+      mission: "To centralize fragmented student community coordinator operations, role-based permission hierarchies, and event registries inside a single type-safe, high-speed campus dashboard ecosystem.",
       challenge: "Campus organizations often struggle with fragmented communications, manual registration forms, and opaque approvals. Event coordinators lacked a central portal, and student users suffered from excessive app fatigue trying to keep up with schedules.",
       solution: "ClubVerse solves this by designing a high-performance relational database with granular role systems. We established automated registration records, custom approvals, and instant status synchronizations. Dashboard screens leverage modular layouts that update dynamically without expensive page reloads.",
       kpis: [
@@ -44,7 +45,7 @@ export default function Projects({ projectsData }) {
         { label: "ACTIVE NODES", value: "1.2k+" },
         { label: "ENCRYPTION KEY", value: "256bit" }
       ],
-      visuals: ["/clubverse.png", "/workspace.png"],
+      visuals: ["/clubverse.png", "/workspace.png", "/resumecraft.png"],
       nextId: "resumecraft"
     },
     {
@@ -57,6 +58,7 @@ export default function Projects({ projectsData }) {
       image: "/resumecraft.png",
       tags: ["REACT.JS", "NODE.JS", "EXPRESS.JS", "MONGODB", "TAILWIND CSS", "JWT AUTH"],
       links: { github: "https://github.com/samaksh34", live: "https://github.com/samaksh34" },
+      mission: "To deliver a complete ATS-friendly print curriculum editor featuring modular drag-reordering, PDF output security, and instant custom downloads for global developers.",
       challenge: "Most developer resumes suffer from poor parser formatting, unaligned sections, or heavy files that fail ATS benchmarks. Existing builders lock standard styling behind subscriptions or export low-quality layouts.",
       solution: "ResumeCraft implements a dynamic form state validator mapped directly to an ATS-optimized CSS printing grid. We developed a secure JWT authorization structure, dashboard catalog saving, and a local server-side PDF render workflow to ensure complete visual fidelity on all desktop machines.",
       kpis: [
@@ -65,7 +67,7 @@ export default function Projects({ projectsData }) {
         { label: "COMPILER WEIGHT", value: "Light" },
         { label: "EXPORT STABILITY", value: "99.8%" }
       ],
-      visuals: ["/resumecraft.png", "/workspace.png"],
+      visuals: ["/resumecraft.png", "/workspace.png", "/clubverse.png"],
       nextId: "feedbacksystem"
     },
     {
@@ -78,6 +80,7 @@ export default function Projects({ projectsData }) {
       image: "/workspace.png",
       tags: ["HTML", "CSS", "JAVASCRIPT", "ANALYTICS", "CHART.JS", "REST API"],
       links: { github: "https://github.com/samaksh34", live: "https://github.com/samaksh34" },
+      mission: "To automate and secure institutional student course reviews with guaranteed privacy models, input anti-collision, and real-time evaluation charts.",
       challenge: "Course evaluation sheets often suffer from biased submissions, manual counting delays, and poor privacy. Academic admins lacked direct access to clear course performance charts or automated report files.",
       solution: "We engineered a clean input verification flow that locks student anonymity while preventing duplicate logs. The system feeds into beautiful performance charts built using canvas tools, generating instant average reports and sorting evaluations efficiently.",
       kpis: [
@@ -86,7 +89,7 @@ export default function Projects({ projectsData }) {
         { label: "REVIEWS PROCESSED", value: "3k+" },
         { label: "DEVICES READY", value: "Mobile" }
       ],
-      visuals: ["/workspace.png", "/clubverse.png"],
+      visuals: ["/workspace.png", "/clubverse.png", "/resumecraft.png"],
       nextId: "healthchatbot"
     },
     {
@@ -99,6 +102,7 @@ export default function Projects({ projectsData }) {
       image: "/workspace.png",
       tags: ["JAVASCRIPT", "NLP CONCEPTS", "AI RESPONSES", "CHAT ENGINE", "NODE.JS"],
       links: { github: "https://github.com/samaksh34", live: "https://github.com/samaksh34" },
+      mission: "To bridge patient symptom clarity by delivering pre-screened advice via an active conversational agent with safety prompt guard layers.",
       challenge: "Healthcare searches are often confusing, resulting in alarmist self-diagnoses. Visitors need a safe, conversational terminal to cast symptoms and receive reliable, verified guidance without complex jargon.",
       solution: "We deployed an intelligent query handler paired with pre-configured health data schemas. The system parses symptom phrases and triggers logical medical advice flows. Message streams are kept fluid with custom spring coordinates and typing animations.",
       kpis: [
@@ -107,7 +111,7 @@ export default function Projects({ projectsData }) {
         { label: "CHATS SECURED", value: "SSL" },
         { label: "ENGINE COMPILER", value: "LLM" }
       ],
-      visuals: ["/workspace.png", "/resumecraft.png"],
+      visuals: ["/workspace.png", "/resumecraft.png", "/clubverse.png"],
       nextId: "clubverse"
     }
   ];
@@ -227,7 +231,7 @@ export default function Projects({ projectsData }) {
       {/* Cinematic Detailed Case Study Modal Sheet */}
       <AnimatePresence>
         {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-end">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
             
             {/* Smooth Dark Backdrop */}
             <motion.div
@@ -235,16 +239,16 @@ export default function Projects({ projectsData }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProject(null)}
-              className="absolute inset-0 bg-black/85 backdrop-blur-md"
+              className="absolute inset-0 bg-black/80 backdrop-blur-md"
             />
 
-            {/* Slide-out Panel Sheet from Right */}
+            {/* Centered Modal Card */}
             <motion.div
-              initial={{ x: "100%", opacity: 0.9 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: "100%", opacity: 0.9 }}
-              transition={{ type: "tween", duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10 w-full max-w-2xl h-full bg-[#070708] border-l border-zinc-900 p-8 sm:p-12 overflow-y-auto flex flex-col justify-between"
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10 w-full max-w-4xl max-h-[85vh] bg-[#070708]/95 border border-zinc-900 rounded-[28px] p-6 sm:p-10 md:p-12 overflow-y-auto shadow-[0_24px_80px_rgba(0,0,0,0.85)] backdrop-blur-xl scrollbar-thin"
             >
               {/* Modal Body Scroll Area */}
               <div>
@@ -265,10 +269,26 @@ export default function Projects({ projectsData }) {
                   </button>
                 </div>
 
-                {/* Title */}
+                 {/* Title & Description */}
                 <h3 className="font-serif text-3xl sm:text-4xl text-white font-medium tracking-tight">
                   {selectedProject.title}: <span className="font-serif italic font-light text-[#85b5ff]">{selectedProject.subtitle}</span>
                 </h3>
+                
+                <p className="mt-4 text-zinc-400 text-xs sm:text-sm font-light leading-relaxed">
+                  {selectedProject.longDescription}
+                </p>
+
+                {/* Tech Stack Used Segment */}
+                <div className="mt-6 space-y-3">
+                  <span className="font-mono text-[9px] tracking-[0.25em] text-zinc-500 uppercase block">TECH STACK USED</span>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tags.map((tag) => (
+                      <span key={tag} className="font-mono text-[9px] tracking-widest uppercase bg-zinc-900/60 text-zinc-300 border border-zinc-800/80 px-3 py-1.5 rounded-md hover:border-[#85b5ff]/20 hover:text-white transition-colors cursor-default">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
                 {/* Premium Code Action Bars */}
                 <div className="mt-8 grid grid-cols-2 gap-4">
@@ -276,7 +296,7 @@ export default function Projects({ projectsData }) {
                     href={selectedProject.links.live}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex h-12 items-center justify-center gap-2.5 rounded-lg bg-[#85b5ff]/10 border border-[#85b5ff]/20 text-[#85b5ff] font-mono text-[10px] font-bold uppercase tracking-widest transition-all hover:bg-[#85b5ff] hover:text-black"
+                    className="flex h-12 items-center justify-center gap-2.5 rounded-lg bg-[#85b5ff]/10 border border-[#85b5ff]/20 text-[#85b5ff] font-mono text-[10px] font-bold uppercase tracking-widest transition-all hover:bg-[#85b5ff] hover:text-black shadow-lg shadow-[#85b5ff]/5"
                   >
                     Live Demo <ArrowUpRight className="h-3.5 w-3.5" />
                   </a>
@@ -290,28 +310,17 @@ export default function Projects({ projectsData }) {
                   </a>
                 </div>
 
-                {/* Massive Showcase Image */}
-                <div className="mt-10 rounded-xl overflow-hidden border border-white/5 bg-zinc-950 aspect-[16/9] relative">
-                  <img
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    className="w-full h-full object-cover filter grayscale contrast-125 brightness-[0.75]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-85 pointer-events-none" />
-                </div>
-
-                {/* Tags cluster */}
-                <div className="mt-8 flex flex-wrap gap-1.5">
-                  {selectedProject.tags.map((tag) => (
-                    <span key={tag} className="font-mono text-[8px] sm:text-[9px] tracking-widest uppercase bg-zinc-950 text-zinc-500 border border-zinc-900 px-2.5 py-1 rounded-md">
-                      {tag}
-                    </span>
-                  ))}
+                {/* Project Mission Segment */}
+                <div className="mt-8 p-6 rounded-2xl border border-zinc-900 bg-zinc-950/45 relative overflow-hidden group">
+                  <div className="absolute -inset-10 bg-gradient-to-r from-[#85b5ff]/5 to-transparent rounded-[2rem] blur-2xl opacity-40 group-hover:opacity-80 transition-opacity duration-700 pointer-events-none" />
+                  <span className="font-mono text-[9px] tracking-[0.25em] text-[#85b5ff] uppercase block mb-2 relative z-10">THE MISSION</span>
+                  <p className="text-zinc-300 text-xs sm:text-sm font-light leading-relaxed italic relative z-10">
+                    "{selectedProject.mission}"
+                  </p>
                 </div>
 
                 {/* Detailed Challenge & Solution Row */}
-                <div className="mt-12 space-y-10">
-                  
+                <div className="mt-12 space-y-10 border-t border-zinc-900/60 pt-10">
                   {/* Challenge Column */}
                   <div>
                     <h4 className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-zinc-500 uppercase block mb-3">
@@ -331,22 +340,30 @@ export default function Projects({ projectsData }) {
                       {selectedProject.solution}
                     </p>
                   </div>
-
                 </div>
 
-                {/* Visual Stack Gallery */}
+                {/* UI Images of Different Pages */}
                 <div className="mt-12 pt-12 border-t border-zinc-900">
-                  <h4 className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-zinc-500 uppercase block mb-6">
-                    VISUAL ARCHITECTURE
-                  </h4>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-zinc-500 uppercase">
+                      UI IMAGES OF DIFFERENT PAGES
+                    </span>
+                    <span className="font-mono text-[9px] text-[#85b5ff] uppercase tracking-widest">
+                      0{selectedProject.visuals.length} Views
+                    </span>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {selectedProject.visuals.map((vis, idx) => (
-                      <div key={idx} className="rounded-lg overflow-hidden border border-white/5 bg-zinc-950 aspect-[4/3]">
+                      <div key={idx} className="group/visual rounded-xl overflow-hidden border border-zinc-900 bg-zinc-950 aspect-[4/3] relative cursor-pointer hover:border-zinc-800 transition-all duration-300">
                         <img
                           src={vis}
-                          alt="Visual Architecture item"
-                          className="w-full h-full object-cover filter grayscale contrast-125"
+                          alt={`${selectedProject.title} Page UI Screenshot ${idx + 1}`}
+                          className="w-full h-full object-cover filter grayscale contrast-[1.1] transition-transform duration-700 group-hover/visual:scale-102 group-hover/visual:filter-none"
                         />
+                        <div className="absolute bottom-3 left-3 bg-black/60 border border-white/5 backdrop-blur-md px-2 py-0.5 rounded text-[8px] font-mono tracking-widest text-zinc-400 group-hover/visual:text-[#85b5ff] transition-all">
+                          {idx === 0 ? "PRIMARY WORKSPACE" : idx === 1 ? "ANALYTICS SYSTEM" : "MANAGEMENT INTERFACE"}
+                        </div>
                       </div>
                     ))}
                   </div>
