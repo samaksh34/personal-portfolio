@@ -180,7 +180,7 @@ function CircularProgress({ value, max = 10, size = 64, strokeWidth = 5 }) {
             GET TO KNOW ME
           </span>
           <h2 className="font-serif text-4xl sm:text-6xl text-white font-medium tracking-tight">
-            About Me<span className="text-[#85b5ff]">.</span>
+            About <span className="font-serif italic font-light text-[#85b5ff]">me</span><span className="text-[#85b5ff]">.</span>
           </h2>
         </motion.div>
 
@@ -343,7 +343,7 @@ function CircularProgress({ value, max = 10, size = 64, strokeWidth = 5 }) {
             ACADEMIC HISTORY // PATHWAY
           </span>
           <h2 className="font-serif text-4xl sm:text-6xl text-white font-medium tracking-tight">
-            Academic Journey<span className="text-[#85b5ff]">.</span>
+            Academic <span className="font-serif italic font-light text-[#85b5ff]">journey</span><span className="text-[#85b5ff]">.</span>
           </h2>
           <p className="max-w-xl text-zinc-500 text-xs sm:text-sm font-light mt-2 leading-relaxed">
             My verified educational milestones, institutional grades, and academic achievements.

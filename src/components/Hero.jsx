@@ -167,13 +167,17 @@ export default function Hero({ personalInfo }) {
               <span className="h-[1px] w-8 bg-[#85b5ff]/30"></span>
             </motion.div>
 
-            {/* Massive Bold Serif Title */}
+            {/* Massive Designer Italic Serif Title (Uppercase Parallelogram Layout) */}
             <motion.h1
               variants={itemVariants}
-              className="font-serif text-5xl sm:text-7xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.05] text-white font-semibold max-w-4xl animate-fade-in"
+              className="font-serif text-5xl sm:text-7xl lg:text-7xl xl:text-8xl leading-[1.1] max-w-4xl animate-fade-in select-none"
             >
-              {name ? name.split(" ")[0] : "Samaksh"}<br />
-              {name ? name.split(" ").slice(1).join(" ") : "Saxena"}<span className="text-[#85b5ff]">.</span>
+              <span className="block font-serif italic font-light uppercase text-white">
+                {name ? name.split(" ")[0].toUpperCase() : "SAMAKSH"}
+              </span>
+              <span className="block font-serif italic font-light uppercase text-[#85b5ff] pl-16 sm:pl-24 md:pl-28 lg:pl-32 xl:pl-36 mt-2">
+                {name ? name.split(" ").slice(1).join(" ").toUpperCase() : "SAXENA"}<span className="text-[#85b5ff]">.</span>
+              </span>
             </motion.h1>
 
             {/* Narrative Description with Role */}

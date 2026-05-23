@@ -197,9 +197,7 @@ export default function Projects({ projectsData }) {
 
         {/* Serif Heading */}
         <h2 className="font-serif text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.08] text-white font-medium max-w-4xl">
-          Architecting digital<br />
-          experiences through precise<br />
-          code and <span className="font-serif italic font-light text-[#85b5ff]">artistic intent.</span>
+          Featured <span className="font-serif italic font-light text-[#85b5ff]">projects</span><span className="text-[#85b5ff]">.</span>
         </h2>
 
         {/* Project Story List */}
@@ -263,25 +261,7 @@ export default function Projects({ projectsData }) {
           ))}
         </div>
 
-        {/* Interested in Collaboration Footer */}
-        <div className="mt-40 w-full border-t border-zinc-900 pt-20 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
-          <div className="md:col-span-8">
-            <h3 className="font-serif text-3xl sm:text-5xl text-white font-medium mb-4 tracking-tight">
-              Interested in collaboration?
-            </h3>
-            <p className="text-zinc-500 text-xs sm:text-sm font-light leading-relaxed max-w-xl">
-              Currently accepting select contract opportunities, software developer internship tracks, and specialized system design consultations.
-            </p>
-          </div>
-          <div className="md:col-span-4 flex md:justify-end">
-            <a
-              href="#contact"
-              className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-950/40 px-8 text-xs font-mono tracking-widest font-semibold uppercase text-zinc-300 transition-all hover:border-zinc-700 hover:text-white active:scale-[0.98]"
-            >
-              Initiate Contact
-            </a>
-          </div>
-        </div>
+
 
       </div>
 
