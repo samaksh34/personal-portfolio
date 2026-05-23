@@ -4,7 +4,6 @@ import Services from "@/components/Services";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import TechStack from "@/components/TechStack";
-import Certifications from "@/components/Certifications";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 
@@ -23,7 +22,6 @@ export default async function Home() {
         <Services servicesData={data.services} />
         <Projects projectsData={data.projects} />
         <TechStack categoriesData={data.techStack} />
-        <Certifications certsData={data.achievements} />
         <FAQ faqData={data.faqs} />
         <Contact contactInfo={data.personalInfo.contact} recruiterLine={data.personalInfo.recruiterLine} />
       </div>
