@@ -26,6 +26,33 @@ export default function Experience({ experienceData, personalInfo }) {
     },
   };
 
+  const cardLeftVariants = {
+    hidden: { x: -60, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
+  const cardRightVariants = {
+    hidden: { x: 60, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
+  const nodeVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 220, damping: 16 }
+    }
+  };
+
   // Dynamically build timeline items from MongoDB experienceData
   const timelineItems = experienceData && experienceData.length > 0
     ? experienceData.map((item) => ({
@@ -58,11 +85,7 @@ export default function Experience({ experienceData, personalInfo }) {
       period: "2023 - 2027",
       grade: "Grade: 8.28 CGPA",
       description: "Pursuing my B.Tech in Information Technology at ABES Engineering College, Ghaziabad.",
-      logo: (
-        <svg className="h-7 w-7 text-amber-500 filter drop-shadow-[0_0_8px_rgba(245,158,11,0.3)]" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-        </svg>
-      )
+      logo: "/abes.png"
     },
     {
       degree: "Class 12th (CBSE)",
@@ -70,12 +93,7 @@ export default function Experience({ experienceData, personalInfo }) {
       period: "2023",
       grade: "Grade: 84.8%",
       description: "Completed my Class XII from Dayawati Modi Academy under the CBSE board.",
-      logo: (
-        <svg className="h-7 w-7 text-emerald-500 filter drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
-          <path d="M12 18.5L5 14.7v-2.1l7 3.8 7-3.8v2.1l-7 3.8z" />
-        </svg>
-      )
+      logo: "/cbse.png"
     },
     {
       degree: "Class 10th (CBSE)",
@@ -83,11 +101,7 @@ export default function Experience({ experienceData, personalInfo }) {
       period: "2021",
       grade: "Grade: 94.6%",
       description: "Completed my Class X from Dayawati Modi Academy under the CBSE board.",
-      logo: (
-        <svg className="h-7 w-7 text-[#85b5ff] filter drop-shadow-[0_0_8px_rgba(133,181,255,0.3)]" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-        </svg>
-      )
+      logo: "/cbse.png"
     }
   ];
 
@@ -260,8 +274,12 @@ export default function Experience({ experienceData, personalInfo }) {
         viewport={{ once: true, margin: "-100px" }}
         className="w-full max-w-6xl mt-40 pt-28 border-t border-zinc-900 flex flex-col items-center relative z-10"
       >
+        {/* Dynamic Background Blur Lights to enhance visual depth */}
+        <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#85b5ff]/[0.02] rounded-full blur-[100px] pointer-events-none z-0" />
+        <div className="absolute bottom-1/3 right-10 w-96 h-96 bg-emerald-500/[0.015] rounded-full blur-[100px] pointer-events-none z-0" />
+
         {/* Header */}
-        <motion.div variants={itemVariants} className="flex flex-col items-center gap-3 mb-16 text-center">
+        <motion.div variants={itemVariants} className="flex flex-col items-center gap-3 mb-16 text-center relative z-10">
           <span className="font-mono text-[10px] tracking-[0.25em] text-[#85b5ff] uppercase">
             ACADEMIC HISTORY // PATHWAY
           </span>
@@ -269,17 +287,24 @@ export default function Experience({ experienceData, personalInfo }) {
             Academic Journey<span className="text-[#85b5ff]">.</span>
           </h2>
           <p className="max-w-xl text-zinc-500 text-xs sm:text-sm font-light mt-2 leading-relaxed">
-            My academic journey, achievements, and continuous learning path in software engineering and computer science.
+            My verified educational milestones, institutional grades, and academic achievements.
           </p>
         </motion.div>
 
         {/* Custom Visual Central Timeline Layout */}
-        <div className="relative w-full mt-12">
-          {/* Vertical Central Line */}
-          <div className="absolute left-8 lg:left-1/2 top-0 h-full w-[2px] bg-[#85b5ff]/15 -translate-x-1/2 z-0" />
+        <div className="relative w-full mt-12 z-10">
+          
+          {/* Enhanced Growing Vertical Central Timeline Line */}
+          <motion.div
+            initial={{ height: 0 }}
+            whileInView={{ height: "100%" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute left-8 lg:left-1/2 top-0 w-[2px] bg-gradient-to-b from-[#85b5ff] via-[#85b5ff]/35 to-transparent -translate-x-1/2 z-0 origin-top shadow-[0_0_10px_rgba(133,181,255,0.2)]"
+          />
 
           {/* Timeline Cards Container */}
-          <div className="space-y-16 relative z-10 w-full">
+          <div className="space-y-20 relative z-10 w-full">
             
             {educationHistory.map((item, index) => {
               const isEven = index % 2 === 0;
@@ -291,57 +316,80 @@ export default function Experience({ experienceData, personalInfo }) {
                   }`}
                 >
                   
-                  {/* Timeline Center Bullet Node */}
-                  <div className="absolute left-8 lg:left-1/2 top-2 lg:top-8 h-10 w-10 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center -translate-x-1/2 z-20 group hover:border-[#85b5ff] transition-colors duration-500">
-                    <div className="h-6 w-6 rounded-full bg-zinc-900 flex items-center justify-center text-white/50">
-                      {item.logo}
+                  {/* Timeline Center Node with custom growing pop and ripple */}
+                  <motion.div
+                    variants={nodeVariants}
+                    className="absolute left-8 lg:left-1/2 top-3 lg:top-8 h-12 w-12 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center -translate-x-1/2 z-20 group"
+                  >
+                    {/* Glowing Accent Ping Effect */}
+                    <div className="absolute inset-0 rounded-full bg-[#85b5ff]/10 animate-ping opacity-60 pointer-events-none group-hover:bg-[#85b5ff]/20 transition-all" />
+                    
+                    {/* Dynamic Image Logo Container */}
+                    <div className="h-9 w-9 rounded-full bg-zinc-900 flex items-center justify-center overflow-hidden border border-white/5 group-hover:border-[#85b5ff]/40 transition-colors shadow-inner">
+                      <img
+                        src={item.logo}
+                        alt=""
+                        className="h-full w-full object-contain filter brightness-110 contrast-105"
+                      />
                     </div>
-                  </div>
-
+                  </motion.div>
+ 
                   {/* Spacer Column for Desktop */}
                   <div className="hidden lg:block lg:w-1/2" />
-
-                  {/* Card Container Column */}
+ 
+                  {/* Card Container Column with Directional Slider Animation */}
                   <motion.div
-                    variants={itemVariants}
+                    variants={isEven ? cardLeftVariants : cardRightVariants}
                     className="w-full lg:w-1/2 lg:px-12"
                   >
-                    <div className="rounded-[24px] border border-zinc-900 bg-zinc-950/45 p-8 relative overflow-hidden group hover:border-zinc-800 transition-all duration-500 shadow-xl">
+                    <div className="rounded-[24px] border border-zinc-900 bg-zinc-950/45 p-8 relative overflow-hidden group hover:border-zinc-800/80 hover:shadow-2xl hover:shadow-[#85b5ff]/[0.02] transition-all duration-500 shadow-xl backdrop-blur-md">
                       
-                      {/* Accent Backlight */}
-                      <div className="absolute -inset-10 bg-gradient-to-tr from-[#85b5ff]/3 to-transparent rounded-[3rem] blur-2xl opacity-30 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none" />
-
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className="h-12 w-12 rounded-xl bg-zinc-900 flex items-center justify-center text-[#85b5ff] shrink-0 border border-white/5 shadow-inner">
-                          {item.logo}
+                      {/* Interactive Accent Backlight Glow */}
+                      <div className="absolute -inset-10 bg-gradient-to-tr from-[#85b5ff]/5 to-transparent rounded-[3rem] blur-2xl opacity-40 group-hover:opacity-85 transition-opacity duration-700 pointer-events-none" />
+ 
+                      {/* Card Content Header */}
+                      <div className="flex items-start gap-4 mb-5 relative z-10">
+                        {/* Dynamic Card Header Logo */}
+                        <div className="h-14 w-14 rounded-2xl bg-zinc-900/80 flex items-center justify-center shrink-0 border border-white/5 shadow-inner overflow-hidden transition-all duration-500 group-hover:border-[#85b5ff]/30">
+                          <img
+                            src={item.logo}
+                            alt=""
+                            className="h-9 w-9 object-contain filter brightness-110 contrast-105"
+                          />
                         </div>
                         <div>
-                          <h3 className="font-serif text-xl sm:text-2xl text-white font-medium group-hover:text-[#85b5ff] transition-colors">
+                          <h3 className="font-serif text-xl sm:text-2xl text-white font-medium group-hover:text-[#85b5ff] transition-colors duration-300">
                             {item.degree}
                           </h3>
-                          <span className="font-mono text-[9px] tracking-widest text-[#85b5ff] uppercase mt-0.5 block">
+                          <span className="font-mono text-[9px] tracking-widest text-[#85b5ff] uppercase mt-1.5 block font-semibold">
                             {item.institution}
                           </span>
                         </div>
                       </div>
-
-                      <div className="space-y-4 font-light">
-                        <div className="flex flex-wrap gap-2 text-xs font-mono text-zinc-500">
-                          <span className="bg-zinc-900/60 px-2.5 py-1 rounded border border-zinc-800/50">{item.period}</span>
-                          <span className="bg-[#85b5ff]/5 text-[#85b5ff] border border-[#85b5ff]/10 px-2.5 py-1 rounded font-semibold">{item.grade}</span>
+ 
+                      {/* Card Body Metrics & Details */}
+                      <div className="space-y-4 font-light relative z-10">
+                        <div className="flex flex-wrap gap-2 text-xs font-mono">
+                          <span className="bg-zinc-900/60 px-3 py-1 rounded-md border border-zinc-850 text-zinc-400 font-medium">
+                            📅 {item.period}
+                          </span>
+                          <span className="bg-[#85b5ff]/5 text-[#85b5ff] border border-[#85b5ff]/15 px-3 py-1 rounded-md font-semibold tracking-wide uppercase">
+                            🏆 {item.grade}
+                          </span>
                         </div>
-                        <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                        
+                        <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-light">
                           {item.description}
                         </p>
                       </div>
-
+ 
                     </div>
                   </motion.div>
-
+ 
                 </div>
               );
             })}
-
+ 
           </div>
         </div>
       </motion.div>
