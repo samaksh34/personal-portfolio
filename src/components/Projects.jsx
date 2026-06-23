@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, X, ArrowRight, ArrowUpRight, Shield, Layers, Cpu, Database, Compass, Eye } from "lucide-react";
+import { ExternalLink, X, ArrowRight, ArrowUpRight, Shield, Layers, Cpu, Database, Compass, Eye, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Inline Github icon for safety
 function GithubIcon({ className }) {
@@ -23,10 +23,11 @@ function GithubIcon({ className }) {
 
 export default function Projects({ projectsData }) {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [activePhotoIndex, setActivePhotoIndex] = useState(null);
 
   // Lock background scroll when modal is open
   useEffect(() => {
-    if (selectedProject) {
+    if (selectedProject || activePhotoIndex !== null) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -34,7 +35,32 @@ export default function Projects({ projectsData }) {
     return () => {
       document.body.style.overflow = "";
     };
+  }, [selectedProject, activePhotoIndex]);
+
+  // Reset image gallery index when changing or closing projects
+  useEffect(() => {
+    setActivePhotoIndex(null);
   }, [selectedProject]);
+
+  // Handle Lightbox keyboard shortcuts
+  useEffect(() => {
+    if (activePhotoIndex === null || !selectedProject) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setActivePhotoIndex(null);
+      } else if (e.key === "ArrowLeft") {
+        setActivePhotoIndex((prev) => (prev === 0 ? selectedProject.visuals.length - 1 : prev - 1));
+      } else if (e.key === "ArrowRight") {
+        setActivePhotoIndex((prev) => (prev === selectedProject.visuals.length - 1 ? 0 : prev + 1));
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activePhotoIndex, selectedProject]);
 
   // Dynamic project layout configuration mapping database IDs to high-end mockups and text details
   const projectConfigs = {
@@ -45,7 +71,7 @@ export default function Projects({ projectsData }) {
       mission: "To deliver a complete ATS-friendly print curriculum editor featuring modular drag-reordering, PDF output security, and instant custom downloads for global developers.",
       challenge: "Most developer resumes suffer from poor parser formatting, unaligned sections, or heavy files that fail ATS benchmarks. Existing builders lock standard styling behind subscriptions or export low-quality layouts.",
       solution: "ResumeCraft implements a dynamic form state validator mapped directly to an ATS-optimized CSS printing grid. We developed a secure JWT authorization structure, dashboard catalog saving, and a local server-side PDF render workflow to ensure complete visual fidelity on all desktop machines.",
-      visuals: ["/resumecraft.png", "/workspace.png", "/clubverse.png"],
+      visuals: ["/resumecraft.png", "/editor.png", "/dashboard.png", "/Completedresume.png"],
       nextId: "clubverse"
     },
     "clubverse": {
@@ -55,7 +81,7 @@ export default function Projects({ projectsData }) {
       mission: "To centralize fragmented student community coordinator operations, role-based permission hierarchies, and event registries inside a single type-safe, high-speed campus dashboard ecosystem.",
       challenge: "Campus organizations often struggle with fragmented communications, manual registration forms, and opaque approvals. Event coordinators lacked a central portal, and student users suffered from excessive app fatigue trying to keep up with schedules.",
       solution: "ClubVerse solves this by designing a high-performance relational database with granular role systems. We established automated registration records, custom approvals, and instant status synchronizations. Dashboard screens leverage modular layouts that update dynamically without expensive page reloads.",
-      visuals: ["/clubverse.png", "/workspace.png", "/resumecraft.png"],
+      visuals: ["/superadmin.png", "/invite.png", "/activitytrack.png", "/clubadmin.png", "/customisations.png", "/clubfeature.png", "/eventcreation.png", "/student.png", "/qrticket.png", "/qrcheck.png", "/qrverified.png"],
       nextId: "feedback-system"
     },
     "feedback-system": {
@@ -118,8 +144,8 @@ export default function Projects({ projectsData }) {
 
   const projects = sourceProjects.map((p) => {
     // Normalise ID matches (e.g. feedbacksystem -> feedback-system)
-    const normalizedId = p.id === "feedbacksystem" ? "feedback-system" : 
-                         p.id === "healthchatbot" ? "health-assistant" : p.id;
+    const normalizedId = p.id === "feedbacksystem" ? "feedback-system" :
+      p.id === "healthchatbot" ? "health-assistant" : p.id;
     const config = projectConfigs[normalizedId] || {
       num: "05",
       subtitle: "Development System",
@@ -134,12 +160,12 @@ export default function Projects({ projectsData }) {
     // Dynamically convert MongoDB stats map/object to case study KPIs list
     const kpis = p.stats
       ? Object.entries(p.stats instanceof Map ? Object.fromEntries(p.stats) : p.stats).map(([key, val]) => ({
-          label: key.replace(/([A-Z])/g, ' $1').toUpperCase(),
-          value: val
-        }))
+        label: key.replace(/([A-Z])/g, ' $1').toUpperCase(),
+        value: val
+      }))
       : [
-          { label: "STATUS", value: "Ready" }
-        ];
+        { label: "STATUS", value: "Ready" }
+      ];
 
     return {
       ...p,
@@ -180,14 +206,14 @@ export default function Projects({ projectsData }) {
         <div className="mt-24 w-full flex flex-col gap-32">
           {projects.map((project, idx) => (
             <div key={project.id} className="w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start border-t border-zinc-900 pt-16">
-              
+
               {/* Project Mockup Panel */}
               <div className="md:col-span-6 group cursor-pointer" onClick={() => setSelectedProject(project)}>
-                <div className="rounded-2xl overflow-hidden border border-white/5 bg-zinc-950 aspect-[16/10] relative shadow-2xl">
+                <div className="rounded-2xl overflow-hidden border border-white/5 bg-zinc-950 aspect-video relative shadow-2xl">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
+                    className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-[1.02]"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
                     <span className="font-mono text-xs tracking-widest text-[#85b5ff] uppercase bg-zinc-950/80 border border-[#85b5ff]/20 rounded-md px-4 py-2.5 flex items-center gap-2">
@@ -203,17 +229,17 @@ export default function Projects({ projectsData }) {
                 <span className="font-serif text-4xl sm:text-6xl text-zinc-800 font-light block mb-4">
                   {project.num}
                 </span>
-                
+
                 {/* Title */}
                 <h3 className="font-serif text-2xl sm:text-4xl text-white font-medium mb-4 tracking-tight">
                   {project.title}
                 </h3>
-                
+
                 {/* Tagline */}
                 <p className="text-zinc-400 text-sm sm:text-base font-light leading-relaxed mb-6">
                   {project.description}
                 </p>
-                
+
                 {/* Tag pills */}
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.tags.slice(0, 4).map((tag) => (
@@ -245,7 +271,7 @@ export default function Projects({ projectsData }) {
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
-            
+
             {/* Smooth Dark Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -266,14 +292,14 @@ export default function Projects({ projectsData }) {
             >
               {/* Modal Body Scroll Area */}
               <div>
-                
+
                 {/* Header */}
                 <div className="flex items-center justify-between border-b border-zinc-900 pb-6 mb-8">
                   <div className="flex items-center gap-3">
                     <span className="font-mono text-[9px] tracking-widest text-[#85b5ff] uppercase">CASE STUDY // {selectedProject.num}</span>
                     <span className="h-1.5 w-1.5 rounded-full bg-[#85b5ff]/60 animate-ping"></span>
                   </div>
-                  
+
                   {/* Close Icon button */}
                   <button
                     onClick={() => setSelectedProject(null)}
@@ -283,11 +309,11 @@ export default function Projects({ projectsData }) {
                   </button>
                 </div>
 
-                 {/* Title & Description */}
+                {/* Title & Description */}
                 <h3 className="font-serif text-3xl sm:text-4xl text-white font-medium tracking-tight">
                   {selectedProject.title}: <span className="font-serif italic font-light text-[#85b5ff]">{selectedProject.subtitle}</span>
                 </h3>
-                
+
                 <p className="mt-4 text-zinc-400 text-xs sm:text-sm font-light leading-relaxed">
                   {selectedProject.longDescription}
                 </p>
@@ -366,17 +392,25 @@ export default function Projects({ projectsData }) {
                       0{selectedProject.visuals.length} Views
                     </span>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {selectedProject.visuals.map((vis, idx) => (
-                      <div key={idx} className="group/visual rounded-xl overflow-hidden border border-zinc-900 bg-zinc-950 aspect-[4/3] relative cursor-pointer hover:border-zinc-800 transition-all duration-300">
+                      <div 
+                        key={idx} 
+                        onClick={() => setActivePhotoIndex(idx)}
+                        className="group/visual rounded-xl overflow-hidden border border-zinc-900 bg-zinc-950 aspect-video relative cursor-pointer hover:border-zinc-800 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300"
+                      >
                         <img
                           src={vis}
                           alt={`${selectedProject.title} Page UI Screenshot ${idx + 1}`}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover/visual:scale-102"
+                          className="w-full h-full object-contain transition-transform duration-700 group-hover/visual:scale-102"
                         />
                         <div className="absolute bottom-3 left-3 bg-black/60 border border-white/5 backdrop-blur-md px-2 py-0.5 rounded text-[8px] font-mono tracking-widest text-zinc-400 group-hover/visual:text-[#85b5ff] transition-all">
                           {idx === 0 ? "PRIMARY WORKSPACE" : idx === 1 ? "ANALYTICS SYSTEM" : "MANAGEMENT INTERFACE"}
+                        </div>
+                        {/* Overlay Zoom Indicator on hover */}
+                        <div className="absolute inset-0 bg-black/25 opacity-0 group-hover/visual:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                          <Eye className="h-5 w-5 text-white drop-shadow-md" />
                         </div>
                       </div>
                     ))}
@@ -418,6 +452,86 @@ export default function Projects({ projectsData }) {
               </div>
 
             </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Zoom / Lightbox Photo Gallery Modal */}
+      <AnimatePresence>
+        {activePhotoIndex !== null && selectedProject && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-black/95 backdrop-blur-lg select-none">
+            
+            {/* Backdrop click to close */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActivePhotoIndex(null)}
+              className="absolute inset-0 cursor-zoom-out"
+            />
+
+            {/* Slider container */}
+            <div className="relative w-full max-w-5xl h-[70vh] flex items-center justify-center z-10">
+              
+              {/* Image viewport with animation */}
+              <motion.div
+                key={activePhotoIndex}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                className="w-full h-full flex items-center justify-center relative"
+              >
+                <img
+                  src={selectedProject.visuals[activePhotoIndex]}
+                  alt={`${selectedProject.title} screenshot ${activePhotoIndex + 1}`}
+                  className="max-w-full max-h-full object-contain rounded-xl shadow-2xl border border-white/5"
+                />
+              </motion.div>
+
+              {/* Slider Controls - Left Button */}
+              {selectedProject.visuals.length > 1 && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActivePhotoIndex((prev) => (prev === 0 ? selectedProject.visuals.length - 1 : prev - 1));
+                  }}
+                  className="absolute left-0 sm:-left-12 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-zinc-800 bg-zinc-950/80 text-zinc-400 hover:text-white hover:border-zinc-700 transition-all hover:scale-105 active:scale-95 shadow-md shadow-black/50"
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </button>
+              )}
+
+              {/* Slider Controls - Right Button */}
+              {selectedProject.visuals.length > 1 && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActivePhotoIndex((prev) => (prev === selectedProject.visuals.length - 1 ? 0 : prev + 1));
+                  }}
+                  className="absolute right-0 sm:-right-12 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-zinc-800 bg-zinc-950/80 text-zinc-400 hover:text-white hover:border-zinc-700 transition-all hover:scale-105 active:scale-95 shadow-md shadow-black/50"
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+              )}
+            </div>
+
+            {/* Header controls (Top right corner close button, Top left view indicator) */}
+            <div className="absolute top-4 sm:top-6 left-4 sm:left-8 z-20 flex items-center gap-3">
+              <span className="font-mono text-[9px] tracking-widest text-[#85b5ff] uppercase bg-[#85b5ff]/10 border border-[#85b5ff]/20 px-3 py-1.5 rounded-md">
+                {activePhotoIndex + 1} / {selectedProject.visuals.length}
+              </span>
+              <span className="hidden sm:inline font-mono text-[9px] tracking-widest text-zinc-500 uppercase">
+                {activePhotoIndex === 0 ? "PRIMARY WORKSPACE" : activePhotoIndex === 1 ? "ANALYTICS SYSTEM" : "MANAGEMENT INTERFACE"}
+              </span>
+            </div>
+
+            <button
+              onClick={() => setActivePhotoIndex(null)}
+              className="absolute top-4 sm:top-6 right-4 sm:right-8 z-20 flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-950/85 text-zinc-400 hover:text-white hover:border-zinc-700 transition-all active:scale-95"
+            >
+              <X className="h-5 w-5" />
+            </button>
           </div>
         )}
       </AnimatePresence>
