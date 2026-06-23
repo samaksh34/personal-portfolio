@@ -82,6 +82,33 @@ export const fallbackData = {
   ],
   projects: [
     {
+      id: "resumecraft",
+      title: "ResumeCraft",
+      description: "ATS-focused resume builder platform with authentication, real-time customization, and PDF export workflows.",
+      longDescription: "ResumeCraft is a full-stack resume generation platform designed to help users create ATS-friendly professional resumes with modern templates and real-time customization. The platform includes authentication systems, live preview rendering, customizable resume sections, and PDF export functionality.\n\nThe project focuses heavily on clean UI design, dynamic rendering systems, and practical user workflows to deliver a seamless resume-building experience.",
+      featured: true,
+      gridSpan: "md:col-span-1",
+      tags: [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "JWT",
+        "PDF Export"
+      ],
+      accentColor: "cyan",
+      stats: {
+        auth: "JWT Authentication",
+        export: "PDF Resume Export",
+        ui: "Live Preview System",
+        templates: "ATS-Friendly Templates"
+      },
+      links: {
+        github: "https://github.com/samaksh34/RESUME-BUILDER",
+        live: "https://resume-builder-eight-ochre.vercel.app/"
+      }
+    },
+    {
       id: "clubverse",
       title: "ClubVerse",
       description: "A scalable club and event management ecosystem with role-based dashboards, authentication systems, and workflow automation.",
@@ -111,33 +138,6 @@ export const fallbackData = {
       }
     },
     {
-      id: "resumecraft",
-      title: "ResumeCraft",
-      description: "ATS-focused resume builder platform with authentication, real-time customization, and PDF export workflows.",
-      longDescription: "ResumeCraft is a full-stack resume generation platform designed to help users create ATS-friendly professional resumes with modern templates and real-time customization. The platform includes authentication systems, live preview rendering, customizable resume sections, and PDF export functionality.\n\nThe project focuses heavily on clean UI design, dynamic rendering systems, and practical user workflows to deliver a seamless resume-building experience.",
-      featured: true,
-      gridSpan: "md:col-span-1",
-      tags: [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "JWT",
-        "PDF Export"
-      ],
-      accentColor: "cyan",
-      stats: {
-        auth: "JWT Authentication",
-        export: "PDF Resume Export",
-        ui: "Live Preview System",
-        templates: "ATS-Friendly Templates"
-      },
-      links: {
-        github: "https://github.com/samaksh34/RESUME-BUILDER",
-        live: "https://resume-builder-eight-ochre.vercel.app/"
-      }
-    },
-    {
       id: "feedback-system",
       title: "Faculty Feedback Automation",
       description: "Web-based evaluation and analytics system for structured faculty feedback management.",
@@ -157,32 +157,6 @@ export const fallbackData = {
         forms: "Dynamic Validation",
         workflow: "Automated Submission",
         dashboards: "Performance Insights"
-      },
-      links: {
-        github: "#",
-        live: "#"
-      }
-    },
-    {
-      id: "health-assistant",
-      title: "AI Health Assistant Chatbot",
-      description: "AI-powered healthcare chatbot with NLP-based query handling and intelligent response workflows.",
-      longDescription: "An AI-integrated healthcare assistant chatbot capable of handling symptom-based conversations and providing intelligent responses using NLP concepts and structured backend pipelines.\n\nThe project focuses on user interaction, conversational workflows, response management, and scalable chatbot architecture.",
-      featured: false,
-      gridSpan: "md:col-span-1",
-      tags: [
-        "AI",
-        "NLP",
-        "Chatbot",
-        "Node.js",
-        "Healthcare"
-      ],
-      accentColor: "emerald",
-      stats: {
-        ai: "NLP-Based Responses",
-        workflow: "Symptom Handling",
-        interface: "Interactive Chat UI",
-        backend: "Response Pipelines"
       },
       links: {
         github: "#",
